@@ -1,0 +1,145 @@
+{% extends "layout/_template.njk" %}
+
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+{% from "components/input/_macro.njk" import onsInput %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Asset Survey",
+        "signoutButton": {
+        "text": "Save and sign out"}
+        },
+    "title": "Household Asset Survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+{% block preMain %}
+    {{
+        onsBreadcrumbs({
+            "ariaLabel": 'Back',
+            "itemsList": [
+                {
+                    "url": 'preferences-1',
+                    "id": 'back',
+                    "text": 'Back'
+                }
+            ]
+        })
+    }}
+{% endblock %}
+{% block main %}
+
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+
+{%
+    call onsQuestion({
+        "title": "How would you prefer to be contacted?",
+        "description": 'We will only contact you if we have a question about the survey.',
+        "legendIsQuestionTitle": true
+    })
+%}
+
+    <form onsubmit="return false;">
+        {{
+            onsRadios({
+                "dontWrap": true,
+                "name": "religion",
+                "clearRadios": {
+                    "text": "Clear selection",
+                    "name": "clear-radios",
+                    "ariaClearText": "You can clear your answer using the clear selection button after the radio inputs",
+                    "ariaClearedText": "You have cleared your answer"
+                },
+                "radios": [
+                    {
+                        "id": "email",
+                        "label": {
+                            "text": "Email"
+                        },
+                        "value": "Email",
+                        "other": {
+                            "otherType": "input",
+                            "id": "email",
+                            "name": "email-address",
+                            "label": {
+                                "text": "Email address"
+                            }
+                        }
+                    },
+                    {
+                        "id": "phone",
+                        "label": {
+                            "text": "Phone"
+                        },
+                        "value": "other",
+                        "other": {
+                            "otherType": "input",
+                            "id": "phone-number",
+                            "name": "other-answer",
+                            "label": {
+                                "text": "Phone number"
+                            }
+                        }
+                    },
+                    {
+                        "id": "sms",
+                        "label": {
+                            "text": "Text message"
+                        },
+                        "value": "other",
+                        "other": {
+                            "otherType": "input",
+                            "id": "sms",
+                            "name": "sms",
+                            "label": {
+                                "text": "Mobile number"
+                            }
+                        }
+                    },
+                    {
+                        "id": "text-phone",
+                        "label": {
+                            "text": "Text phone"
+                        },
+                        "value": "other",
+                        "other": {
+                            "otherType": "input",
+                            "id": "text-phone",
+                            "name": "other-answer",
+                            "label": {
+                                "text": "Phone number"
+                            }
+                        }
+                    }
+                ]
+            })
+        }}
+    </form>
+
+{% endcall %}
+    {{
+        onsButton({
+            "text": "Save and continue",
+            "iconType": "false",
+            "url": "preferences-2"
+        })
+    }}
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "layout/_template.njk" %}
+
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Asset Survey"
+        },
+    "title": "Household asset survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+{% block main %}
+<div class="ons-grid">
+    <div class="ons-grid__col ons-col-8@m ">
+      <div class="ons-pl-col">
+    <h1 class="ons-u-mt-2xl">Start study</h1>
+    <div class="ons-panel ons-panel--info ons-panel--no-title ons-u-mb-s">
+        <span class="ons-panel__assistive-text ons-u-vh">Important information: </span>
+        <div class="ons-panel__body">
+            <div class="ons-field ons-question__answer">
+                <label class="ons-label ons-label--with-description" for="access-code-example"
+                    aria-describedby="description-hint">Enter your 6-character access code</label>
+                    <span id="description-hint" class="ons-label__description ons-input--with-description">Keep this
+                    code safe. You will need to enter it every time you access your study</span>
+                    <input type="text" id="access-code-example"
+                    class="ons-input ons-input--text ons-input-type__input ons-access-code__input ons-js-access-code ons-u-mb-2xs ons-input--w-7"
+                    name="access-code" maxlength="19" data-group-size="4" autocomplete="off"
+                    autocapitalize="characters" aria-describedby="description-hint" />
+                    <a class="ons-u-fs-s ons-input__post-link" href="#0">Where to find your access code</a>
+                </div>
+            </div>
+        </div>
+        <div class="ons-panel ons-panel--bare ons-u-mb-s">
+            <span class="ons-panel__assistive-text ons-u-vh">Important information: </span>
+            <span class="ons-panel__icon ons-u-fs-r"><svg class="ons-icon" viewBox="0 0 10 13"
+                xmlns="http://www.w3.org/2000/svg" focusable="false" fill="currentColor" role="img" aria-hidden="true">
+                      <path
+                        d="M12.25,6h-.72V4.49a3.5,3.5,0,0,0-7,0V6H3.75A.77.77,0,0,0,3,6.75v6.5a.77.77,0,0,0,.75.75h8.5a.77.77,0,0,0,.75-.75V6.75A.77.77,0,0,0,12.25,6ZM5.54,4.49a2.5,2.5,0,1,1,5,0V6h-5ZM9,11.66a.3.3,0,0,1-.26.34H7.29A.29.29,0,0,1,7,11.69v0l.39-1.82a1,1,0,1,1,1.4-.18.77.77,0,0,1-.18.18Z"
+                        transform="translate(-3 -0.99)" />
+                    </svg></span>
+                <div class="ons-panel__body"> Your personal information is protected by law and will be kept
+                    confidential </div>
+            </div>
+            <br>
+
+            {% from "components/button/_macro.njk" import onsButton %}
+            {{
+                onsButton({
+                    "text": "Access survey",
+                    "iconType": "false",
+                    "url": "check-address"
+                })
+            }}
+            <br><br><br>
+
+            <h2>If you do not have an access code</h2>
+            <p>
+                If you have lost or not received an access code, you can <a href="#0">request a new access code</a>. This can be sent to you by text
+                or post.
+            </p>
+
+            {% set content %}
+                <p>If you need to answer separately from the people you live with, you can <a href="#0">request an individual access code</a>.</p>
+                {%
+                    call onsPanel({
+                        "variant": "warn"
+                    })
+                %}
+                    Someone in your household must still complete a study using this household access code
+                {% endcall %}
+            {% endset %}
+        </div>
+    </div>
+</div>
+{% endblock %}

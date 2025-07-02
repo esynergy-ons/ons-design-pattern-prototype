@@ -1,0 +1,77 @@
+{% extends "layout/_template.njk" %}
+
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+{% set pageConfig = { 
+    "header": {
+        "title": "Household asset survey"
+        },
+        "title": "Household asset survey",
+        "footer": {
+            "OGLLink": {
+                "pre": 'All content is available under the',
+                "link": 'Open Government Licence v3.0',
+                "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+                "post": ', except where otherwise stated'
+            }
+        }
+    } %}
+
+    {% block preMain %}
+        {{
+            onsBreadcrumbs({
+                "ariaLabel": 'Back',
+                "itemsList": [
+                    {
+                        "url": 'example-address-input-non-editable',
+                        "id": 'back',
+                        "text": 'Back'
+                    }
+                ]
+            })
+        }}
+    {% endblock %}
+    {% block main %}
+        <div class="ons-grid">
+            <div class="ons-grid__col ons-col-8@m ">
+              <div class="ons-pl-col">
+                <h1>Household assets survey</h1>
+
+                <div class="container">
+    <p>Thanks for proving your email address.</p>
+    {% from "components/button/_macro.njk" import onsButton %}
+
+            <div class="ons-btn-group">
+                {{
+                    onsButton({
+                        "text": 'Access study'
+                    })
+                }}
+
+            </div>
+
+    <p>Or copy and paste <a href="#">https://www.ons.gov.uk/surveys/874yr3</a> into your browser</p>
+
+    <div class="code-block">
+      {{MagicLink}}
+    </div>
+
+    <p>This link will expire in <strong>15 minutes</strong> for your security.</p>
+
+    <p>If you didn’t request this, you can safely ignore this email.</p>
+
+  </div>
+
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

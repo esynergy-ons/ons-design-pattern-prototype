@@ -1,0 +1,136 @@
+{% extends "layout/_template.njk" %}
+
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Asset Survey",
+        "signoutButton": {
+        "text": "Save and sign out"}
+        },
+    "title": "Household Asset Survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+
+{% block preMain %}
+        {{
+            onsBreadcrumbs({
+                "ariaLabel": 'Back',
+                "itemsList": [
+                    {
+                        "url": 'section-1',
+                        "id": 'back',
+                        "text": 'Back'
+                    }
+                ]
+            })
+        }}
+    {% endblock %}
+
+{% block main %}
+
+{%
+    call onsQuestion({
+        "title": "What is your ethnic group or background?",
+        "classes": "ons-u-mt-no",
+        "legendIsQuestionTitle": true
+    })
+%}
+    {{
+        onsRadios({
+            "dontWrap": true,
+            "name": "ethnicity",
+            "radios": [
+                {
+                    "id": "white-example-radio-with-description",
+                    "label": {
+                        "text": "White",
+                        "description": "Includes British, Northern Irish, Irish, Gypsy, Irish Traveller, Roma or any other White background"
+                    },
+                    "name": "white"
+                },
+                {
+                    "id": "mixed-example-radio-with-description",
+                    "label": {
+                        "text": "Mixed or Multiple ethnic groups",
+                        "description": "Includes White and Black Caribbean, White and Black African, White and Asian or any other Mixed or Multiple background"
+                    },
+                    "name": "mixed"
+                },
+                {
+                    "id": "asian-example-radio-with-description",
+                    "label": {
+                        "text": "Asian or Asian British",
+                        "description": "Includes Indian, Pakistani, Bangladeshi, Chinese or any other Asian background"
+                    },
+                    "name": "asian"
+                },
+                {
+                    "id": "black-example-radio-with-description",
+                    "label": {
+                        "text": "Black, Black British, Caribbean or African",
+                        "description": "Includes Black British, Caribbean, African or any other Black background"
+                    },
+                    "name": "black"
+                },
+                {
+                    "id": "other-example-radio-with-description",
+                    "label": {
+                        "text": "Other ethnic group",
+                        "description": "Includes Arab or any other ethnic group"
+                    },
+                    "name": "other"
+                }
+            ]
+        })
+    }}
+{% endcall %}
+{% from "components/details/_macro.njk" import onsDetails %}
+
+{{
+    onsDetails({
+        "id": "details-example",
+        "title": "Why your answer is important",
+        "content": "<p>The ONS asks about ethnicity to understand the UK’s diverse population. This helps make sure public services like healthcare, schools, and housing meet everyone’s needs, and that resources are shared fairly. It also helps spot and reduce inequality. Your answers are kept private and only used to improve services.</p>"
+    })
+}}
+<br><br>
+<div class="ons-btn-group">
+    {{
+        onsButton({
+            "text": "Continue",
+            "iconType": "false",
+            "url": "interstitial-1"
+        })
+    }}
+    {{
+        onsButton({
+            "type": 'button',
+            "text": 'Skip this question',
+            "url": "section-2",
+            "iconType": 'false',
+            "variants": 'secondary'
+        })
+    }}
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,118 @@
+{% extends "layout/_template.njk" %}
+{% from "components/table-of-contents/_macro.njk" import onsTableOfContents %}
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Assets Survey"
+        },
+    "title": "Household Assets Survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+{% block main %}
+
+  <div class="ons-grid">
+    <div class="ons-grid__col ons-col-7@m ">
+      <div>
+        <section id="section1">
+                    <h1>Take part in the Household Assets Survey</h1>
+                    <p>
+                      This important study looks at household borrowing, saving, and retirement plans. Your answers help us understand what's happening across the UK, informing decisions on things like <strong>affordable homes</strong> and what <strong>support people need for their retirement</strong>.
+                    </p>
+
+                    <p>
+                      This study will ask questions about anyone in the household. It is important that everyine in your household sees the letters and leaflets we send you.
+                    </p>
+                    <p>
+                      The information you give us is <strong>protected by law and is treated as confidential.</strong>
+                    </p>
+                    <p>
+                      Your answers will help shape the future of the UK.
+                    </p>
+                    <h2>
+                      To thank you for your time...
+                    </h2>
+                    <p>
+                      We have included a <strong>£10 e-voucher</strong>. A <strong>£20 voucher</strong> will also be sent <strong>to each adult</strong> who completes the survey online.
+                    </p>
+                    <p>
+                      The survey is split into parts. You can complete it all in one go, or save and come back. How long it takes depends on your answers, but for most people it is between 30-40 minutes.
+                    </p>
+                    <br>
+                    <div>
+                      {{
+                          onsButton({
+                              "text": "Start survey",
+                              "url": "access-code",
+                              "noIcon": "true"
+                          })
+                      }}
+                    </div>
+                    <hr><br>
+                    <ul>
+                      <li><a href="www.ons.gov.uk/surveys"><strong>www.ons.gov.uk/surveys</strong></a></li>
+                      <li>Freephone: <strong>0800 298 5313</strong></li>
+                      <li>Text Relay Service: <strong>(181001) 0800 298 5315?</strong></li>
+                    </ul>
+                </section>
+      </div>
+    </div>
+    <div class="ons-grid__col ons-col-4@m ons-push-1@m">
+      <div>
+        {{
+                    onsTableOfContents({
+                        "title": 'Also available in',
+                        "ariaLabel": 'Sections in this page',
+                        "itemsList": [
+                            {
+                                "url": 'index-ti',
+                                "text": 'ቲግሬይንያዊ'
+                            },
+                            {
+                                "url": '#section2',
+                                "text": 'বাংলা'
+                            },
+                            {
+                                "url": '#section3',
+                                "text": 'Português'
+                            },
+                            {
+                                "url": '#section4',
+                                "text": 'Polskim'
+                            },
+                            {
+                                "url": '#section5',
+                                "text": 'Română'
+                            },
+                            {
+                                "url": '#section4',
+                                "text": 'Cymraeg'
+                            },
+                            {
+                                "url": '#section5',
+                                "text": 'English'
+                            }
+                        ]
+                    })
+                }}
+      </div>
+    </div>
+  </div>
+    
+{% endblock %}

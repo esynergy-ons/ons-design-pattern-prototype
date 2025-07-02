@@ -1,0 +1,119 @@
+{% extends "layout/_template.njk" %}
+
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+{% from "components/input/_macro.njk" import onsInput %}
+
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Assets Survey",
+        "signoutButton": {
+        "text": "Save and sign out"}
+        },
+    "title": "Household Assets Survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+{% block preMain %}
+    {{
+        onsBreadcrumbs({
+            "ariaLabel": 'Back',
+            "itemsList": [
+                {
+                    "url": 'soc-2',
+                    "id": 'back',
+                    "text": 'Back'
+                }
+            ]
+        })
+    }}
+{% endblock %}
+
+{% block main %}
+<div class="ons-grid">
+    <div class="ons-grid__col ons-col-8@m ">
+        <div class="ons-pl-col">
+            <div class="ons-page__body">
+                <h1 class="ons-u-fs-xl">As a [Job title], what is the main activity you do?</h1>
+
+                {% from "components/panel/_macro.njk" import onsPanel %}
+                {{
+                    onsPanel({
+                        "body": '
+                        <p>We would like to follow up with you about this question to help us understand your job better.</p>
+                        <p>An advisor will be available online in 2 minutes, or we can contact you by [my contact preference].</p>
+                        '
+                    })
+                }}
+
+
+                {%
+                    call onsQuestion({
+                        "title": "",
+                        "legendIsQuestionTitle": true
+                    })
+                %}
+                {{
+                    onsRadios({
+                        "dontWrap": true,
+                        "name": "satisfaction",
+                        "or": "Or",
+                        "radios": [
+                            {
+                                "id": "very-satisfied",
+                                "label": {
+                                    "text": "I'll wait for a web chat advisor"
+                                },
+                                "value": "very-satisfied"
+                            },
+                            {
+                                "id": "somewhat-satisfied",
+                                "label": {
+                                    "text": "Contact me later by [my contact preference]"
+                                },
+                                "value": "somewhat-satisfied"
+                            },
+                            {
+                                "id": "no",
+                                "label": {
+                                    "text": "I want to skip this question"
+                                },
+                                "value": "no"
+                            }
+                        ]
+                    })
+                }}
+            {% endcall %}
+
+                <br>
+                <div class="ons-btn-group">
+                    {{
+                        onsButton({
+                            "text": 'Continue',
+                            "url": 'soc-3',
+                            "iconType": 'false'
+                        })
+                    }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+            

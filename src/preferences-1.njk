@@ -1,0 +1,122 @@
+{% extends "layout/_template.njk" %}
+
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+{% from "components/input/_macro.njk" import onsInput %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Asset Survey",
+        "signoutButton": {
+        "text": "Save and sign out"}
+        },
+    "title": "Household Asset Survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+{% block preMain %}
+    {{
+        onsBreadcrumbs({
+            "ariaLabel": 'Back',
+            "itemsList": [
+                {
+                    "url": 'name',
+                    "id": 'back',
+                    "text": 'Back'
+                }
+            ]
+        })
+    }}
+{% endblock %}
+{% block main %}
+<div class="ons-page__body">
+        <div class="ons-grid">
+            <div class="ons-grid__col ons-col-8@m ">
+
+{%
+    call onsQuestion({
+        "title": "How would you like to complete your survey?",
+        "classes": "ons-u-mt-no",
+        "description": "We save your answers as you progress and you can change how you complete the survey at any time.",
+        "legendIsQuestionTitle": true
+    })
+%}
+    {{
+        onsRadios({
+            "name": "property-type",
+            "dontWrap": true,
+            "radios": [
+                {
+                    "id": "house",
+                    "label": {
+                        "text": "Online"
+                    },
+                    "value": "house"
+                },
+                {
+                    "id": "chat",
+                    "label": {
+                        "text": "Web chat"
+                    },
+                    "value": "chat"
+                },
+                {
+                    "id": "phone",
+                    "label": {
+                        "text": "Phone"
+                    },
+                    "value": "Phone"
+                },
+                {
+                    "id": "video",
+                    "label": {
+                        "text": "Video call"
+                    },
+                    "value": "video"
+                },
+                {
+                    "id": "in-person",
+                    "label": {
+                        "text": "In person, at home"
+                    },
+                    "value": "In person, at home"
+                },
+                {
+                    "id": "somewhere-else",
+                    "label": {
+                        "text": "In person, somewhere else",
+                        "description": "for example, at your local library. ONS will contact you to arrange."
+                    },
+                    "value": "In person, somewhere else"
+                }
+            ]
+        })
+    }}
+    {% from "components/button/_macro.njk" import onsButton %}
+
+{% endcall %}
+    {{
+        onsButton({
+            "text": "Save and continue",
+            "iconType": "false",
+            "url": "preferences-1b"
+        })
+    }}
+    </div>
+    </div>
+    </div>
+{% endblock %}

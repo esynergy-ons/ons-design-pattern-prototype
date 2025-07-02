@@ -1,0 +1,81 @@
+{% extends "layout/_template.njk" %}
+
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Asset Survey"
+        },
+    "title": "Household Asset Survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+{% block main %}
+    {%
+        call onsQuestion({
+            "title": "Is this your address?"
+        })
+    %}
+        <form action="#0">
+            {{-
+                onsAddressOutput({
+                    "classes": 'ons-u-mb-l',
+                    "unit": '',
+                    "organisation": '27 Redfern Close',
+                    "line1": '',
+                    "line2": '',
+                    "town": 'Birmingham',
+                    "postcode": 'B15 2NX'
+                })
+            -}}
+
+
+            {{
+                onsRadios({
+                    "name": 'confirm-address',
+                    "dontWrap": true,
+                    "radios": [
+                        {
+                            "id": 'yes',
+                            "label": {
+                                "text": 'Yes, this is the correct address'
+                            },
+                            "value": 'Yes, this is the correct address'
+                        },
+                        {
+                            "id": 'no',
+                            "label": {
+                                "text": 'No, this is not my address'
+                            },
+                            "value": 'No, this is not my address'
+                        }
+                    ]
+                })
+            }}
+            <br>
+            {% from "components/button/_macro.njk" import onsButton %}
+            {{
+                onsButton({
+                    "text": "Save and continue",
+                    "iconType": "false",
+                    "url": "email-address"
+                })
+            }}
+        </form>
+    {% endcall %}
+{% endblock %}

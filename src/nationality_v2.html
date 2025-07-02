@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nationality Auto-Suggest</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    .suggestions {
+      border: 1px solid #ccc;
+      border-top: none;
+      max-height: 200px;
+      overflow-y: auto;
+      background-color: white;
+      position: absolute;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .suggestion {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .suggestion:hover {
+      background-color: #f0f0f0;
+    }
+
+    .wrapper {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <h2>Nationality Auto-Suggest</h2>
+  <div class="wrapper">
+    <input type="text" id="nationalityInput" placeholder="Start typing a nationality..." autocomplete="off" />
+    <div id="suggestions" class="suggestions"></div>
+  </div>
+
+  <script>
+    const nationalityInput = document.getElementById("nationalityInput");
+    const suggestionsDiv = document.getElementById("suggestions");
+
+    const nationalities = [
+      "Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Argentine", "Armenian",
+      "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian",
+      "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian", "Brazilian",
+      "British", "Bruneian", "Bulgarian", "Burkinabé", "Burmese", "Burundian", "Cambodian", "Cameroonian",
+      "Canadian", "Cape Verdean", "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Congolese",
+      "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djiboutian", "Dominican", "Dutch",
+      "Ecuadorian", "Egyptian", "Emirati", "English", "Equatoguinean", "Eritrean", "Estonian", "Ethiopian",
+      "Fijian", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek", "Grenadian",
+      "Guatemalan", "Guinean", "Guyanese", "Haitian", "Honduran", "Hungarian", "Icelandic", "Indian", "Indonesian",
+      "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Ivorian", "Jamaican", "Japanese", "Jordanian", "Kazakh",
+      "Kenyan", "Kuwaiti", "Kyrgyz", "Laotian", "Latvian", "Lebanese", "Liberian", "Libyan", "Lithuanian",
+      "Luxembourgish", "Macedonian", "Malagasy", "Malawian", "Malaysian", "Maldivian", "Malian", "Maltese",
+      "Mauritanian", "Mauritian", "Mexican", "Moldovan", "Mongolian", "Montenegrin", "Moroccan", "Mozambican",
+      "Namibian", "Nepalese", "New Zealander", "Nicaraguan", "Nigerian", "Nigerien", "North Korean", "Norwegian",
+      "Omani", "Pakistani", "Palestinian", "Panamanian", "Papua New Guinean", "Paraguayan", "Peruvian", "Filipino",
+      "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan", "Salvadoran", "Samoan", "Saudi", "Scottish",
+      "Senegalese", "Serbian", "Seychellois", "Sierra Leonean", "Singaporean", "Slovak", "Slovenian", "Somali",
+      "South African", "South Korean", "Spanish", "Sri Lankan", "Sudanese", "Surinamese", "Swazi", "Swedish",
+      "Swiss", "Syrian", "Taiwanese", "Tajik", "Tanzanian", "Thai", "Togolese", "Tongan", "Trinidadian",
+      "Tunisian", "Turkish", "Turkmen", "Ugandan", "Ukrainian", "Uruguayan", "Uzbek", "Venezuelan", "Vietnamese",
+      "Welsh", "Yemeni", "Zambian", "Zimbabwean"
+    ];
+
+    nationalityInput.addEventListener("input", function () {
+      const query = this.value.toLowerCase();
+      suggestionsDiv.innerHTML = "";
+
+      if (query.length < 2) {
+        return;
+      }
+
+      const matches = nationalities.filter(nat => nat.toLowerCase().includes(query));
+      matches.slice(0, 6).forEach(nat => {
+        const div = document.createElement("div");
+        div.classList.add("suggestion");
+        div.textContent = nat;
+        div.addEventListener("click", () => {
+          nationalityInput.value = nat;
+          suggestionsDiv.innerHTML = "";
+        });
+        suggestionsDiv.appendChild(div);
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".wrapper")) {
+        suggestionsDiv.innerHTML = "";
+      }
+    });
+  </script>
+</body>
+</html>

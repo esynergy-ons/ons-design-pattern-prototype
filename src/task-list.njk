@@ -1,0 +1,150 @@
+{% extends "layout/_template.njk" %}
+
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+
+{% set pageConfig = { 
+    "header": {
+        "title": "Household asset survey",
+        "signoutButton": {
+        "text": "Save and sign out"}
+        },
+    "title": "Household asset survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+{% block main %}
+    <h1 class="ons-u-mt-l">Choose another section to complete</h1>
+    <p>This is your first of 8 surveys, we'll follow up with you every 2 years.</p>
+    {{
+        onsSummary({
+            "variant": "hub",
+            "classes": "ons-u-mt-l",
+            "summaries": [
+                {
+                    "groups": [
+                        {
+                            "rows": [
+                                {
+                                    "title": "Survey preferences",
+                                    "itemsList": [
+                                        {
+                                            "iconType": "check",
+                                            "valueList": [
+                                                {
+                                                    "text": "Completed"
+                                                }
+                                            ],
+                                            "actions": [
+                                                {
+                                                    "text": "View answers",
+                                                    "ariaLabel": "View answers for name, contact details and survey preferences",
+                                                    "url": "#0"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "title": "About you",
+                                    "itemsList": [
+                                        {
+                                            "iconType": "check",
+                                            "valueList": [
+                                                {
+                                                    "text": "Completed"
+                                                }
+                                            ],
+                                            "actions": [
+                                                {
+                                                    "text": "View answers",
+                                                    "ariaLabel": "View answers for ethnicity, sexual identity and religion",
+                                                    "url": "#0"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "title": "Savings and debt",
+                                    "itemsList": [
+                                        {
+                                            "valueList": [
+                                                {
+                                                    "text": "Partially completed"
+                                                }
+                                            ],
+                                            "actions": [
+                                                {
+                                                    "text": "Continue with section",
+                                                    "ariaLabel": "View answers for savings accounts and investments",
+                                                    "url": "#0"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "title": "Work and employment",
+                                    "itemsList": [
+                                        {
+                                            "valueList": [
+                                                {
+                                                    "text": "Not started"
+                                                }
+                                            ],
+                                            "actions": [
+                                                {
+                                                    "text": "Start section",
+                                                    "ariaLabel": "Continue with industry, occupation, employment status and socio-economic classifications section",
+                                                    "url": "/patterns/hub-and-spoke/examples/spoke-continue/"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "title": "Your health",
+                                    "itemsList": [
+                                        {
+                                            "valueList": [
+                                                {
+                                                    "text": "Not started"
+                                                }
+                                            ],
+                                            "actions": [
+                                                {
+                                                    "text": "Start section",
+                                                    "ariaLabel": "Continue with industry, occupation, employment status and socio-economic classifications section",
+                                                    "url": "/patterns/hub-and-spoke/examples/spoke-continue/"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        })
+    }}
+
+    {{
+        onsButton({
+            "text": 'Continue',
+            "classes": 'ons-u-mb-l ons-u-mt-xl',
+            "url": '/patterns/hub-and-spoke/examples/spoke-continue/',
+            "iconType": false
+        })
+    }}
+{% endblock %}
+

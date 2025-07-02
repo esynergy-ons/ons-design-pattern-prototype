@@ -1,0 +1,105 @@
+{% extends "layout/_template.njk" %}
+
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+{% from "components/input/_macro.njk" import onsInput %}
+{% from "components/autosuggest/_macro.njk" import onsAutosuggest %}
+
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Assets Survey",
+        "signoutButton": {
+        "text": "Save and sign out"}
+        },
+    "title": "Household Assets Survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+{% block preMain %}
+    {{
+        onsBreadcrumbs({
+            "ariaLabel": 'Back',
+            "itemsList": [
+                {
+                    "url": 'section-2',
+                    "id": 'back',
+                    "text": 'Back'
+                }
+            ]
+        })
+    }}
+{% endblock %}
+
+{% block main %}
+<div class="ons-grid">
+    <div class="ons-grid__col ons-col-8@m ">
+        <div class="ons-pl-col">
+            <div class="ons-page__body">
+            {{
+                onsAutosuggest({
+                    "id": "country-of-birth-autosuggest-multiple",
+                    "input": {
+                        "label": {
+                            "text": "What is your job title?",
+                            "classes": "ons-u-fs-xl",
+                            "id": "country-of-birth-label-multiple",
+                            "description": "Enter your own answer or select from suggestions."
+                        },
+                        "autocomplete": "off"
+                    },
+                    "instructions": "Use up and down keys to navigate suggestions once you\'ve typed more than two characters. Use the enter key to select a suggestion. Touch device users, explore by touch or with swipe gestures.",
+                    "ariaYouHaveSelected": "You have selected",
+                    "ariaMinChars": "Enter 3 or more characters for suggestions.",
+                    "ariaOneResult": "There is one suggestion available.",
+                    "ariaNResults": "There are {n} suggestions available.",
+                    "ariaLimitedResults": "Results have been limited to 10 suggestions. Type more characters to improve your search",
+                    "moreResults": "Continue entering to improve suggestions",
+                    "resultsTitle": "Suggestions",
+                    "resultsTitleId": "country-of-birth-suggestions",
+                    "allowMultiple": true,
+                    "autosuggestData": "/data/soc-data.json",
+                    "noResults": "No suggestions found. You can enter your own answer",
+                    "typeMore": "Continue entering to get suggestions",
+                    "language": "en"
+                })
+            }}
+        <br>
+    {% from "components/details/_macro.njk" import onsDetails %}
+
+    {{
+        onsDetails({
+            "id": "details-example",
+            "title": "Why your answer is important",
+            "content": "<p>The ONS asks for your job title to understand what jobs people do. This helps plan training, support fair pay, and improve job opportunities. Your answer is private and only used to help improve services.</p>"
+        })
+    }}
+
+    <br>
+    {% from "components/button/_macro.njk" import onsButton %}
+    {{
+        onsButton({
+            "text": "Save and continue",
+            "url": 'soc-2',
+            "iconType": 'false'
+        })
+    }}
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}
