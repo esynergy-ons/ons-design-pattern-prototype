@@ -34,7 +34,7 @@
                 "ariaLabel": 'Back',
                 "itemsList": [
                     {
-                        "url": 'config-1',
+                        "url": 'preferences-2',
                         "id": 'back',
                         "text": 'Back'
                     }
@@ -52,17 +52,11 @@
             <p>In addition to your voucher, we'll also provide you with a download or printable version of the information you've given us for your records.</p>           
 
 <hr>
+
 <h2>Total voucher amount for</h2>
 
-{%
-    call onsQuestion({
-        "title": "[Respondent #1 name]",
-        "classes": "ons-u-mt-s",
-        "legendIsQuestionTitle": false
-    })
-%}
 
-<div style="width:7rem">
+<div style="width:10rem; float:right">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      viewBox="0 0 88 88" style="enable-background:new 0 0 88 88;" xml:space="preserve">
 <style type="text/css">
@@ -92,7 +86,16 @@
 </g>
 </svg>
 </div>
-<span style="font-size:5rem; font-weight:900"> £30</span><br>
+
+{%
+    call onsQuestion({
+        "title": "[Respondent #1 name]",
+        "classes": "ons-u-mt-s",
+        "legendIsQuestionTitle": false
+    })
+%}
+
+<span class="ons-u-fs-3xl"> £30</span><br>
 
 <h3>If you answer all the sections, we'll also credit you<br><strong>£5 towards your next survey.</strong></h3>
     {{
@@ -188,9 +191,9 @@
 {% endcall %}
 {{
     onsButton({
-        "text": "Create my survey",
+        "text": "Save and continue",
         "iconType": "false",
-        "url": "task-list-1"
+        "url": "summary-1"
     })
 }}
         </div>
