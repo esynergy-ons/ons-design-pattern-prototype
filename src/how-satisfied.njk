@@ -1,6 +1,10 @@
 {% extends "layout/_template.njk" %}
 {% from "components/question/_macro.njk" import onsQuestion %}
 {% from "components/input/_macro.njk" import onsInput %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/feedback/_macro.njk" import onsFeedback %}
+{% from "components/button/_macro.njk" import onsButton %}
+
 {% set pageConfig = { 
     "header": {
         "title": "Household Assets Survey",
@@ -30,8 +34,7 @@
                     "justification": {
                         "title": "Why we ask this question",
                         "content": "<p>The ONS asks how satisfied you are with your life to understand how people are feeling across the UK. This helps improve services, support mental health, and show where help is needed. Your answer is private and used only to help make life better for everyone.</p>"
-                    },
-                    "submitButton": true
+                    }
                 })
             %}
             {{
@@ -46,7 +49,21 @@
                 })
             }}
             {% endcall %}
-            <br><br>
+            <div class="ons-btn-group">
+                {{
+                    onsButton({
+                        "text": 'Save and continue'
+                    })
+                }}
+                {{
+                    onsButton({
+                        "type": 'button',
+                        "text": 'Skip this question',
+                        "name": 'example',
+                        "variants": 'secondary'
+                    })
+                }}
+            </div>
             </div>
             <div class="ons-grid__col ons-col-4@m">
                 {{
@@ -57,7 +74,7 @@
                         "linkUrl": "#0",
                         "linkText": "Chat with an advisor"
                     })
-                }}<br>
+                }}
             </div>
         </div>
     </div>
