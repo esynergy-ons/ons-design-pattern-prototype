@@ -45,11 +45,10 @@
 <div class="ons-grid">
     <div class="ons-grid__col ons-col-8@m ">
         <div class="ons-pl-col">
-            <div class="ons-page__body">
-<h1 class="ons-u-fs-xl">You have added 1 person to your household</h1>
-{% from "components/summary/_macro.njk" import onsSummary %}
+    <h1 class="ons-u-fs-xl">You have added 1 person to your household</h1>
+    {% from "components/summary/_macro.njk" import onsSummary %}
 
-{{
+    {{
     onsSummary({
         "summaries": [
             {
@@ -125,11 +124,8 @@
                         "iconType": 'false'
                     })
                 }}
-            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-
-
-                
+        
 {% endblock %}

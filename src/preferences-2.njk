@@ -10,6 +10,8 @@
 {% from "components/address-output/_macro.njk" import onsAddressOutput %}
 {% from "components/input/_macro.njk" import onsInput %}
 {% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/checkboxes/_macro.njk" import onsCheckboxes %}
+
 {% set pageConfig = { 
     "header": {
         "title": "Household Assets Survey",
@@ -42,65 +44,66 @@
     }}
 {% endblock %}
 {% block main %}
+<div class="ons-page__body">
+    <div class="ons-grid">
+        <div class="ons-grid__col ons-col-8@m ">
 
-{% from "components/question/_macro.njk" import onsQuestion %}
-{% from "components/checkboxes/_macro.njk" import onsCheckboxes %}
+        {%
+            call onsQuestion({
+                "title": "If we need to contact you when is the best time?",
+                "legendIsQuestionTitle": true,
+                "description": 'We will only contact you if we have a question about the survey.'
+            })
+        %}
+            {{
+                onsCheckboxes({
+                    "checkboxesLabel": "Select all that apply",
+                    "dontWrap": true,
+                    "name": "devices",
+                    "checkboxes": [
+                        {
+                            "id": "anytime",
+                            "label": {
+                                "text": "Any time of day"
+                            },
+                            "value": "Any time of day"
+                        },
+                        {
+                            "id": "Morning",
+                            "label": {
+                                "text": "Morning"
+                            },
+                            "value": "Morning"
+                        },
+                        {
+                            "id": "Afternoon",
+                            "label": {
+                                "text": "Afternoon"
+                            },
+                            "value": "Afternoon"
+                        },
+                        {
+                            "id": "Evening",
+                            "label": {
+                                "text": "Evening"
+                            },
+                            "value": "Evening"
+                        }
+                    ]
+                })
+            }}
+            {% from "components/button/_macro.njk" import onsButton %}
 
-{%
-    call onsQuestion({
-        "title": "If we need to contact you when is the best time?",
-        "legendIsQuestionTitle": true,
-        "description": 'We will only contact you if we have a question about the survey.',
-        "classes": "ons-u-mt-no"
-    })
-%}
-    {{
-        onsCheckboxes({
-            "checkboxesLabel": "Select all that apply",
-            "dontWrap": true,
-            "name": "devices",
-            "checkboxes": [
-                {
-                    "id": "anytime",
-                    "label": {
-                        "text": "Any time of day"
-                    },
-                    "value": "Any time of day"
-                },
-                {
-                    "id": "Morning",
-                    "label": {
-                        "text": "Morning"
-                    },
-                    "value": "Morning"
-                },
-                {
-                    "id": "Afternoon",
-                    "label": {
-                        "text": "Afternoon"
-                    },
-                    "value": "Afternoon"
-                },
-                {
-                    "id": "Evening",
-                    "label": {
-                        "text": "Evening"
-                    },
-                    "value": "Evening"
-                }
-            ]
-        })
-    }}
-    {% from "components/button/_macro.njk" import onsButton %}
-
-    {% endcall %}
-    {{
-        onsButton({
-            "text": "Save and continue",
-            "iconType": "false",
-            "url": "summary"
-        })
-    }}
-
+            {% endcall %}
+            {{
+                onsButton({
+                    "text": "Save and continue",
+                    "iconType": "false",
+                    "url": "summary"
+                })
+            }}
+        </div>
+    </div>
+</div>
 
 {% endblock %}

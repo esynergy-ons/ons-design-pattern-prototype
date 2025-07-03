@@ -30,88 +30,76 @@
     <div class="ons-grid__col ons-col-7@m ">
       <div>
         <section id="section1">
-                    <h1>Take part in the Household Assets Survey</h1>
-                    <p>
-                      This important study looks at household borrowing, saving, and retirement plans. Your answers help us understand what's happening across the UK, informing decisions on things like <strong>affordable homes</strong> and what <strong>support people need for their retirement</strong>.
-                    </p>
-
-                    <p>
-                      This study will ask questions about anyone in the household. It is important that everyine in your household sees the letters and leaflets we send you.
-                    </p>
-                    <p>
-                      The information you give us is <strong>protected by law and is treated as confidential.</strong>
-                    </p>
-                    <p>
-                      Your answers will help shape the future of the UK.
-                    </p>
-                    <h2>
-                      To thank you for your time...
-                    </h2>
-                    <p>
-                      We have included a <strong>£10 e-voucher</strong>. A <strong>£20 voucher</strong> will also be sent <strong>to each adult</strong> who completes the survey online.
-                    </p>
-                    <p>
-                      The survey is split into parts. You can complete it all in one go, or save and come back. How long it takes depends on your answers, but for most people it is between 30-40 minutes.
-                    </p>
-                    <br>
-                    <div>
-                      {{
-                          onsButton({
-                              "text": "Start survey",
-                              "url": "access-code",
-                              "noIcon": "true"
-                          })
-                      }}
-                    </div>
-                    <hr><br>
-                    <ul>
-                      <li><a href="www.ons.gov.uk/surveys"><strong>www.ons.gov.uk/surveys</strong></a></li>
-                      <li>Freephone: <strong>0800 298 5313</strong></li>
-                      <li>Text Relay Service: <strong>(181001) 0800 298 5315?</strong></li>
-                    </ul>
-                </section>
-      </div>
-    </div>
-    <div class="ons-grid__col ons-col-4@m ons-push-1@m">
-      <div>
-        {{
-                    onsTableOfContents({
-                        "title": 'Also available in',
-                        "ariaLabel": 'Sections in this page',
-                        "itemsList": [
-                            {
-                                "url": 'index-ti',
-                                "text": 'ቲግሬይንያዊ'
-                            },
-                            {
-                                "url": '#section2',
-                                "text": 'বাংলা'
-                            },
-                            {
-                                "url": '#section3',
-                                "text": 'Português'
-                            },
-                            {
-                                "url": '#section4',
-                                "text": 'Polskim'
-                            },
-                            {
-                                "url": '#section5',
-                                "text": 'Română'
-                            },
-                            {
-                                "url": '#section4',
-                                "text": 'Cymraeg'
-                            },
-                            {
-                                "url": '#section5',
-                                "text": 'English'
-                            }
-                        ]
-                    })
+            <h1>You're invited to take part in the Household Assets Survey</h1>
+            <p>
+                This survey looks at how families in the UK manage their money – what they own, save, and owe. Your answers help the government make choices about money that affect everyone in the country. Everyone in your household aged 16 or over is invited.
+            </p>
+            <h2>To thank you for your time</h2>
+            <p>
+                We have included a <strong>£10 e-voucher</strong>. A <strong>£20 voucher</strong> will also be sent <strong>to each adult</strong> who completes the survey online.
+            </p>
+            <p>
+                The survey is split into parts. You can complete it all in one go, or save and come back. How long it takes depends on your answers, but for most people it is between 30-40 minutes.
+            </p>
+            <br>
+            <div>
+                {{
+                    onsButton({
+                    "text": "Start survey",
+                    "url": "access-code",
+                    "noIcon": "true"
+                })
                 }}
-      </div>
+            </div>
+            <hr><br>
+            <ul>
+                <li><a href="www.ons.gov.uk/surveys"><strong>www.ons.gov.uk/surveys</strong></a></li>
+                <li>Freephone: <strong>0800 298 5313</strong></li>
+                <li>Text Relay Service: <strong>(181001) 0800 298 5315?</strong></li>
+            </ul>
+        </section>
     </div>
-  </div>
+</div>
+<div class="ons-grid__col ons-col-4@m ons-push-1@m">
+    <div>
+        {{
+            onsTableOfContents({
+                "title": 'Also available in',
+                "ariaLabel": 'Sections in this page',
+                "itemsList": [
+                    {
+                        "url": 'index-ti',
+                        "text": 'ቲግሬይንያዊ'
+                    },
+                    {
+                        "url": '#section2',
+                        "text": 'বাংলা'
+                    },
+                    {
+                        "url": '#section3',
+                        "text": 'Português'
+                    },
+                    {
+                        "url": '#section4',
+                        "text": 'Polskim'
+                    },
+                    {
+                        "url": '#section5',
+                        "text": 'Română'
+                    },
+                    {
+                        "url": '#section4',
+                        "text": 'Cymraeg'
+                    },
+                    {
+                        "url": '#section5',
+                        "text": 'English'
+                    }
+                ]
+            })
+        }}
+        </div>
+    </div>
+</div>
     
 {% endblock %}

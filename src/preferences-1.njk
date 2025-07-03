@@ -12,11 +12,11 @@
 {% from "components/question/_macro.njk" import onsQuestion %}
 {% set pageConfig = { 
     "header": {
-        "title": "Household Asset Survey",
+        "title": "Household Assets Survey",
         "signoutButton": {
         "text": "Save and sign out"}
         },
-    "title": "Household Asset Survey",
+    "title": "Household Assets Survey",
     "footer": {
         "OGLLink": {
             "pre": 'All content is available under the',
@@ -43,79 +43,70 @@
 {% endblock %}
 {% block main %}
 <div class="ons-page__body">
-        <div class="ons-grid">
-            <div class="ons-grid__col ons-col-8@m ">
+    <div class="ons-grid">
+        <div class="ons-grid__col ons-col-8@m ">
 
-{%
-    call onsQuestion({
-        "title": "How would you like to complete your survey?",
-        "classes": "ons-u-mt-no",
-        "description": "We save your answers as you progress and you can change how you complete the survey at any time.",
-        "legendIsQuestionTitle": true
-    })
-%}
-    {{
-        onsRadios({
-            "name": "property-type",
-            "dontWrap": true,
-            "radios": [
-                {
-                    "id": "house",
-                    "label": {
-                        "text": "Online"
-                    },
-                    "value": "house"
-                },
-                {
-                    "id": "chat",
-                    "label": {
-                        "text": "Web chat"
-                    },
-                    "value": "chat"
-                },
-                {
-                    "id": "phone",
-                    "label": {
-                        "text": "Phone"
-                    },
-                    "value": "Phone"
-                },
-                {
-                    "id": "video",
-                    "label": {
-                        "text": "Video call"
-                    },
-                    "value": "video"
-                },
-                {
-                    "id": "in-person",
-                    "label": {
-                        "text": "In person, at home"
-                    },
-                    "value": "In person, at home"
-                },
-                {
-                    "id": "somewhere-else",
-                    "label": {
-                        "text": "In person, somewhere else",
-                        "description": "for example, at your local library. ONS will contact you to arrange."
-                    },
-                    "value": "In person, somewhere else"
-                }
-            ]
-        })
-    }}
-    {% from "components/button/_macro.njk" import onsButton %}
+        {%
+            call onsQuestion({
+                "title": "How would you like to complete your survey?",
+                "description": "We save your answers as you progress and you can change how you complete the survey at any time.",
+                "legendIsQuestionTitle": true
+            })
+        %}
+            {{
+                onsRadios({
+                    "name": "property-type",
+                    "dontWrap": true,
+                    "radios": [
+                        {
+                            "id": "house",
+                            "label": {
+                                "text": "Online"
+                            },
+                            "value": "house"
+                        },
+                        {
+                            "id": "phone",
+                            "label": {
+                                "text": "Phone"
+                            },
+                            "value": "Phone"
+                        },
+                        {
+                            "id": "video",
+                            "label": {
+                                "text": "Video call"
+                            },
+                            "value": "video"
+                        },
+                        {
+                            "id": "in-person",
+                            "label": {
+                                "text": "In person, at home"
+                            },
+                            "value": "In person, at home"
+                        },
+                        {
+                            "id": "somewhere-else",
+                            "label": {
+                                "text": "In person, somewhere else",
+                                "description": "for example, at your local library. ONS will contact you to arrange."
+                            },
+                            "value": "In person, somewhere else"
+                        }
+                    ]
+                })
+            }}
 
-{% endcall %}
-    {{
-        onsButton({
-            "text": "Save and continue",
-            "iconType": "false",
-            "url": "preferences-1b"
-        })
-    }}
+            {% endcall %}
+            {{
+                onsButton({
+                    "text": "Save and continue",
+                    "iconType": "false",
+                    "url": "preferences-1b"
+                })
+            }}
+        </div>
     </div>
-    </div>
-    </div>
+</div>
 {% endblock %}

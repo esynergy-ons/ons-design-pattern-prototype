@@ -12,11 +12,11 @@
 {% from "components/question/_macro.njk" import onsQuestion %}
 {% set pageConfig = { 
     "header": {
-        "title": "Household Asset Survey",
+        "title": "Household Assets Survey",
         "signoutButton": {
         "text": "Save and sign out"}
         },
-    "title": "Household Asset Survey",
+    "title": "Household Assets Survey",
     "footer": {
         "OGLLink": {
             "pre": 'All content is available under the',
@@ -42,103 +42,104 @@
     }}
 {% endblock %}
 {% block main %}
+<div class="ons-page__body">
+    <div class="ons-grid">
+        <div class="ons-grid__col ons-col-8@m ">
 
-{% from "components/radios/_macro.njk" import onsRadios %}
-{% from "components/button/_macro.njk" import onsButton %}
-{% from "components/question/_macro.njk" import onsQuestion %}
-{% from "components/panel/_macro.njk" import onsPanel %}
+        {%
+            call onsQuestion({
+                "title": "How would you prefer to be contacted in the future?",
+                "description": 'We will only contact you if we have a question about the survey.',
+                "legendIsQuestionTitle": true
+            })
+        %}
 
-{%
-    call onsQuestion({
-        "title": "How would you prefer to be contacted?",
-        "description": 'We will only contact you if we have a question about the survey.',
-        "legendIsQuestionTitle": true
-    })
-%}
+            <form onsubmit="return false;">
+                {{
+                    onsRadios({
+                        "dontWrap": true,
+                        "name": "religion",
+                        "clearRadios": {
+                            "text": "Clear selection",
+                            "name": "clear-radios",
+                            "ariaClearText": "You can clear your answer using the clear selection button after the radio inputs",
+                            "ariaClearedText": "You have cleared your answer"
+                        },
+                        "radios": [
+                            {
+                                "id": "email",
+                                "label": {
+                                    "text": "Email"
+                                },
+                                "value": "Email",
+                                "other": {
+                                    "otherType": "input",
+                                    "id": "email",
+                                    "name": "email-address",
+                                    "label": {
+                                        "text": "Email address"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "phone",
+                                "label": {
+                                    "text": "Phone"
+                                },
+                                "value": "other",
+                                "other": {
+                                    "otherType": "input",
+                                    "id": "phone-number",
+                                    "name": "other-answer",
+                                    "label": {
+                                        "text": "Phone number"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "sms",
+                                "label": {
+                                    "text": "Text message"
+                                },
+                                "value": "other",
+                                "other": {
+                                    "otherType": "input",
+                                    "id": "sms",
+                                    "name": "sms",
+                                    "label": {
+                                        "text": "Mobile number"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "text-phone",
+                                "label": {
+                                    "text": "Text phone"
+                                },
+                                "value": "other",
+                                "other": {
+                                    "otherType": "input",
+                                    "id": "text-phone",
+                                    "name": "other-answer",
+                                    "label": {
+                                        "text": "Phone number"
+                                    }
+                                }
+                            }
+                        ]
+                    })
+                }}
+            </form>
 
-    <form onsubmit="return false;">
+        {% endcall %}
         {{
-            onsRadios({
-                "dontWrap": true,
-                "name": "religion",
-                "clearRadios": {
-                    "text": "Clear selection",
-                    "name": "clear-radios",
-                    "ariaClearText": "You can clear your answer using the clear selection button after the radio inputs",
-                    "ariaClearedText": "You have cleared your answer"
-                },
-                "radios": [
-                    {
-                        "id": "email",
-                        "label": {
-                            "text": "Email"
-                        },
-                        "value": "Email",
-                        "other": {
-                            "otherType": "input",
-                            "id": "email",
-                            "name": "email-address",
-                            "label": {
-                                "text": "Email address"
-                            }
-                        }
-                    },
-                    {
-                        "id": "phone",
-                        "label": {
-                            "text": "Phone"
-                        },
-                        "value": "other",
-                        "other": {
-                            "otherType": "input",
-                            "id": "phone-number",
-                            "name": "other-answer",
-                            "label": {
-                                "text": "Phone number"
-                            }
-                        }
-                    },
-                    {
-                        "id": "sms",
-                        "label": {
-                            "text": "Text message"
-                        },
-                        "value": "other",
-                        "other": {
-                            "otherType": "input",
-                            "id": "sms",
-                            "name": "sms",
-                            "label": {
-                                "text": "Mobile number"
-                            }
-                        }
-                    },
-                    {
-                        "id": "text-phone",
-                        "label": {
-                            "text": "Text phone"
-                        },
-                        "value": "other",
-                        "other": {
-                            "otherType": "input",
-                            "id": "text-phone",
-                            "name": "other-answer",
-                            "label": {
-                                "text": "Phone number"
-                            }
-                        }
-                    }
-                ]
+            onsButton({
+                "text": "Save and continue",
+                "iconType": "false",
+                "url": "preferences-2"
             })
         }}
-    </form>
-
-{% endcall %}
-    {{
-        onsButton({
-            "text": "Save and continue",
-            "iconType": "false",
-            "url": "preferences-2"
-        })
-    }}
+        </div>
+    </div>
+</div>
 {% endblock %}
