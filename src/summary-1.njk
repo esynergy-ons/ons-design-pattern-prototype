@@ -12,11 +12,11 @@
 {% from "components/question/_macro.njk" import onsQuestion %}
 {% set pageConfig = { 
     "header": {
-        "title": "Household asset survey",
+        "title": "Household Assets Survey",
         "signoutButton": {
         "text": "Save and sign out"}
         },
-    "title": "Household asset survey",
+    "title": "Household Assets Survey",
     "footer": {
         "OGLLink": {
             "pre": 'All content is available under the',
@@ -161,13 +161,25 @@
                             },
                             {
                                 "id": "sales-detail-row",
-                                "title": "Select everything you want to answer",
+                                "title": "Creating your survey, sections included",
                                 "itemsList": [
                                     {
                                         "id": "sales-detail",
                                         "valueList": [
                                             {
-                                                "text": "About you and your household, Work and employment, Your home and household bills, Bank savings, Investments, Pensions, Foreign assets, Inheritance, Debt and bankrupcy"
+                                                "text": "
+                                                <ul>
+                                                    <li>About you and your household</li>
+                                                    <li>Work and employment</li>
+                                                    <li>Your home and household bills</li>
+                                                    <li>Bank savings</li>
+                                                    <li>Investments</li>
+                                                    <li>Pensions</li>
+                                                    <li>Foreign assets</li>
+                                                    <li>Inheritance</li>
+                                                    <li>Debt and bankrupcy</li>
+                                                </ul>
+                                                "
                                             }
                                         ],
                                         "actions": [
@@ -218,8 +230,8 @@
             <div class="ons-btn-group">
                 {{
                     onsButton({
-                        "text": 'Continue',
-                        "url": 'summary',
+                        "text": 'Create my survey',
+                        "url": 'task-list-1',
                         "iconType": 'false'
                     })
                 }}
