@@ -49,7 +49,7 @@
                     <h1 class="ons-u-fs-=xl">About you and your household</h1>
 
                     <p>
-                        This section asks for about the relationships in your household, ethnicity, sexuality, religion, health and wellbeing.
+                        This section asks about the relationships in your household, ethnicity, sexuality, religion, health and wellbeing.
                     </p>
                     {% from "components/details/_macro.njk" import onsDetails %}
 
@@ -61,9 +61,7 @@
                         })
                     }}
                     <br>
-                    <p>You can skip any questions that you prefer not to answer.</p>
-
-                    {% from "components/button/_macro.njk" import onsButton %}
+                    <p>You must complete all questions in this section to receive the reward.</p>
                     <br>
                     <div class="ons-btn-group">
                         {{
@@ -73,7 +71,7 @@
                                 "url": "ethnicity"
                             })
                         }}
-                        {{
+                        <!--{{
                             onsButton({
                                 "type": 'button',
                                 "text": 'Skip this section',
@@ -81,7 +79,7 @@
                                 "iconType": 'false',
                                 "variants": 'secondary'
                             })
-                        }}
+                        }}-->
                     </div>
                 </div>
             </div>

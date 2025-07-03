@@ -28,30 +28,32 @@
 } %}
 
 {% block main %}
+<div class="ons-page__body">
+    <div class="ons-grid">
+        <div class="ons-grid__col ons-col-8@m ">
+            {%
+                set pageConfig = {
+                    "header": {
+                        "title": "Survey title",
+                        "mastheadLogoUrl": "#0"
+                    },
+                    "footer": {
+                    }
+                }
+            %}
 
-{% extends "layout/_template.njk" %}
-{% from "components/panel/_macro.njk" import onsPanel %}
-{% from "components/button/_macro.njk" import onsButton %}
-{%
-    set pageConfig = {
-        "header": {
-            "title": "Survey title",
-            "mastheadLogoUrl": "#0"
-        },
-        "footer": {
-        }
-    }
-%}
-
-    {{
-        onsPanel({
-            "variant": "success",
-            "id": "feedback-success",
-            "iconType": "check",
-            "iconSize": "xl",
-            "body": "<h1>Thank you for your feedback</h1>
-            <p>Your comments will help us make improvements to our surveys. We are not able to reply to comments, but we appreciate your feedback.</p><p>You can close this page.</p>"
-        })
-    }}
+            {{
+                onsPanel({
+                    "variant": "success",
+                    "id": "feedback-success",
+                    "iconType": "check",
+                    "iconSize": "xl",
+                    "body": "<h1>Thank you for your feedback</h1>
+                    <p>Your comments will help us make improvements to our surveys. We are not able to reply to comments, but we appreciate your feedback.</p><p>You can close this page.</p>"
+                })
+            }}
+        </div>
+    </div>
+</div>
 
 {% endblock %}

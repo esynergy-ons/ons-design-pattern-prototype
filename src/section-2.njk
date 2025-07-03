@@ -60,9 +60,7 @@
                         })
                     }}
                     <br>
-                    <p>You can skip any questions that you prefer not to answer.</p>
-
-                    {% from "components/button/_macro.njk" import onsButton %}
+                    <p>You must complete all questions in this section to receive the reward.</p>
                     <br>
                     <div class="ons-btn-group">
                         {{
@@ -72,7 +70,7 @@
                                 "url": "soc-1"
                             })
                         }}
-                        {{
+                        <!--{{
                             onsButton({
                                 "type": 'button',
                                 "text": 'Skip this section',
@@ -80,7 +78,7 @@
                                 "iconType": 'false',
                                 "variants": 'secondary'
                             })
-                        }}
+                        }}-->
                     </div>
                 </div>
             </div>

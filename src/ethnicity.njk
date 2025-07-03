@@ -51,6 +51,14 @@
         "legendIsQuestionTitle": true
     })
 %}
+
+{{
+    onsDetails({
+        "id": "details-example",
+        "title": "Why your answer is important",
+        "content": "<p>The ONS asks about ethnicity to understand the UK’s diverse population. This helps make sure public services like healthcare, schools, and housing meet everyone’s needs, and that resources are shared fairly. It also helps spot and reduce inequality. Your answers are kept private and only used to improve services.</p>"
+    })
+}}
     {{
         onsRadios({
             "dontWrap": true,
@@ -100,16 +108,6 @@
         })
     }}
 {% endcall %}
-{% from "components/details/_macro.njk" import onsDetails %}
-
-{{
-    onsDetails({
-        "id": "details-example",
-        "title": "Why your answer is important",
-        "content": "<p>The ONS asks about ethnicity to understand the UK’s diverse population. This helps make sure public services like healthcare, schools, and housing meet everyone’s needs, and that resources are shared fairly. It also helps spot and reduce inequality. Your answers are kept private and only used to improve services.</p>"
-    })
-}}
-<br><br>
 <div class="ons-btn-group">
     {{
         onsButton({
