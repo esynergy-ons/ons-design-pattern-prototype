@@ -39,10 +39,12 @@
                     "id": 'success-id',
                     "iconType": "check",
                     "iconSize": "xl",
-                    "body": 'Information has been successfully submitted and your voucher has been emailed to you. You can <a href="#">download a copy</a> of the survey for your records.'
+                    "body": 'Your information has been successfully submitted. Your voucher has been emailed to you or you can <a href="#">download it here</a>. You can <a href="#">download a copy</a>.
+                    '
                 })
             }}
-
+            <br>
+            <p>You can also <a href="#">download a copy</a> of your answers for your records.</p>
             {% extends "layout/_template.njk" %}
             {% from "components/radios/_macro.njk" import onsRadios %}
             {% from "components/textarea/_macro.njk" import onsTextarea %}
@@ -70,7 +72,8 @@
                     }
                 }
             %}
-        <br><br>
+            
+            <hr><br>
             <h1>Give feedback about this service</h1>
 
             {{

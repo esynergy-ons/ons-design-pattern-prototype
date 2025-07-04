@@ -16,7 +16,7 @@
         "signoutButton": {
         "text": "Save and sign out"}
         },
-    "title": "Household Asset Survey",
+    "title": "Household Assets Survey",
     "footer": {
         "OGLLink": {
             "pre": 'All content is available under the',
@@ -42,6 +42,58 @@
     {% endblock %}
 
 {% block main %}
+  <style>
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 30px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #1D70B8; /* ONS blue */
+      transition: 0.4s;
+      border-radius: 30px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 22px;
+      width: 22px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #ccc; 
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(30px);
+    }
+
+    .label-text {
+      font-family: Arial, sans-serif;
+      margin-left: 10px;
+      font-size: 16px;
+    }
+  </style>
     <div class="ons-page__body">
         <div class="ons-grid">
             <div class="ons-grid__col ons-col-8@m ">
@@ -82,6 +134,34 @@
                         }}-->
                     </div>
                 </div>
+            </div>
+            <div class="ons-grid__col ons-col-4@m ">
+                <label class="switch">
+                    <input type="checkbox" id="factToggle" onchange="toggleLabel()">
+                    <span class="slider"></span>
+                  </label>
+                  <span class="label-text" id="toggleLabel">Hide my facts</span>
+                  <hr>
+                  <script>
+                    function toggleLabel() {
+                      const checkbox = document.getElementById('factToggle');
+                      const label = document.getElementById('toggleLabel');
+                      label.textContent = checkbox.checked ? 'Show my facts' : 'Hide my facts';
+                    }
+                  </script>
+                <h3 class="ons-u-fs-l">Did you know?</h3>
+                {{
+                    onsDetails({
+                        "id": "details-example",
+                        "title": "Birmingham is one of the UK’s most ethnically diverse cities",
+                        "content": "<p>As of the ONS Census 2021, Birmingham stands as the most diverse major city outside London — equal to or just behind Leicester and Slough in overall ethnic minority proportion.</p>
+                        "
+                    })
+                }}
+                <br>
+                <p>Discover more ONS facts as you progess through this survey.</p>
+                <p><a href="#">Interested in anything particular?</a></p>
+                <hr>
             </div>
         </div>
     </div>
