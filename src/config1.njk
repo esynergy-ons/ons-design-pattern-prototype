@@ -46,11 +46,15 @@
 <div class="ons-page__body">
     <div class="ons-grid">
         <div class="ons-grid__col ons-col-8@m ">
-            <h1 class="ons-u-fs-xl">We value your time and information</h1>
-            <p>This survey covers a wide range of personal and financial questions. The more information you give us, the more we'll credit your voucher when you finish.</p>
-            <p>In addition to your voucher, we'll also provide you with a download or printable version of the information you've given us for your records.</p>           
+            <h1 class="ons-u-fs-xl">Rewarding your time and effort</h1>
+            <p>
+                This survey includes a range of personal and financial questions and normally takes about an hour to complete. We understand that some topics may feel sensitive, but your responses are vital in helping shape policy decisions and improve public services.
+            </p>
 
-<hr>
+{% from "components/details/_macro.njk" import onsDetails %}
+
+
+
 
 <h2>Total voucher amount for</h2>
 <div style="width:10rem; float:right">
@@ -95,9 +99,28 @@
 <span class="ons-u-fs-3xl"> £30</span><br>
 
 <p>If you answer all the sections, we'll also credit you<br><strong>£5 towards your next survey.</strong></p>
+
+{{
+    onsDetails({
+        "id": "details-example",
+        "title": "Why are some sections rewarded more than others?",
+        "content": "
+            <p>
+                We'd like you to complete every section, but some are especially important to us. These sections are rewarded more because the information plays a key role in informing our work.
+            </p>
+            <p>
+               The more detail you provide, the more we can credit your voucher once the survey is completed.
+            </p>
+            <p>
+                You’ll also receive a copy of your responses to download or print for your own records.
+            </p> 
+        "
+    })
+}}
+
     {{
         onsCheckboxes({
-            "checkboxesLabel": "Select everything you want to answer",
+            "checkboxesLabel": "Survey sections",
             "dontWrap": true,
             "name": "central-heating",
             "checkboxes": [
