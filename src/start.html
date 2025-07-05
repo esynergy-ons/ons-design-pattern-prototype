@@ -1,81 +1,83 @@
-{% extends "layouts/ons.html" %}
-
-{% block pageTitle %}
-  {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
-
-{% block head %}
-  <link href="/public/stylesheets/application.css" rel="stylesheet" />
-{% endblock %}
-
-{% block content %}
-  <div class="govuk-grid-row">
+{% block pageTitle %} {{ serviceName }} – GOV.UK Prototype Kit {% endblock %} {%
+block head %}
+<link href="/public/stylesheets/application.css" rel="stylesheet" />
+{% endblock %} {% block content %}
+<div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-
-      <h1 class="govuk-heading-xl">
-        Take part in the {{ serviceName }}
-      </h1>
+        <h1 class="govuk-heading-xl">Take part in the {{ serviceName }}</h1>
     </div>
-  </div>
-  <div class="govuk-grid-row">
+</div>
+<div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <p>
-        This important study looks at household borrowing, saving, and retirement plans. Your answers help us understand what's happening across the UK, informing decisions on things like <strong>affordable homes</strong> and what <strong>support people need for their retirement</strong>.
-      </p>
-      <p>This study will ask questions about anyone in the household. It is important that everyine in your household sees the letters and leaflets we send you.
-      </p>
-      <p>
-        Your answers will help shape the future of the UK.
-      </p>
-      <div class="govuk-inset-text">
         <p>
-          The information you give us is <strong>protected by law and is treated as confidential.</strong>
+            This important study looks at household borrowing, saving, and
+            retirement plans. Your answers help us understand what's happening
+            across the UK, informing decisions on things like
+            <strong>affordable homes</strong> and what
+            <strong>support people need for their retirement</strong>.
         </p>
-      </div>
-      <h2 class="govuk-heading-l">
-        To thank you for your time...
-      </h2>
-      <p>
-        We have included a <strong>£10 e-voucher</strong>. A <strong>£20 voucher</strong> will also be sent <strong>to each adult</strong> who completes the survey online.
-      </p>
-      <p>
-        The survey is split into parts. You can complete it all in one go, or save and come back. How long it takes depends on your answers, but for most people it is between 30-40 minutes.
-      </p>
-      <br>
-      <div class="govuk-button-group">
-        {% from "govuk/components/button/macro.njk" import govukButton %}
+        <p>
+            This study will ask questions about anyone in the household. It is
+            important that everyine in your household sees the letters and
+            leaflets we send you.
+        </p>
+        <p>Your answers will help shape the future of the UK.</p>
+        <div class="govuk-inset-text">
+            <p>
+                The information you give us is
+                <strong
+                    >protected by law and is treated as confidential.</strong
+                >
+            </p>
+        </div>
+        <h2 class="govuk-heading-l">To thank you for your time...</h2>
+        <p>
+            We have included a <strong>£10 e-voucher</strong>. A
+            <strong>£20 voucher</strong> will also be sent
+            <strong>to each adult</strong> who completes the survey online.
+        </p>
+        <p>
+            The survey is split into parts. You can complete it all in one go,
+            or save and come back. How long it takes depends on your answers,
+            but for most people it is between 30-40 minutes.
+        </p>
+        <br />
+        <div class="govuk-button-group">
+            {% from "govuk/components/button/macro.njk" import govukButton %} {{
+            govukButton({ text: "Access study" }) }}
+        </div>
 
-        {{ govukButton({
-          text: "Access study"
-        }) }}
-      </div>
-      
-      <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-      <ul class="govuk-list">
-        <li><a href="www.ons.gov.uk/surveys"><strong>www.ons.gov.uk/surveys</strong></a></li>
-        <li>Freephone: <strong>0800 298 5313</strong></li>
-        <li>Text Relay Service: <strong>(181001) 0800 298 5315?</strong></li>
-      </ul>
-      <p>
+        <hr
+            class="govuk-section-break govuk-section-break--xl govuk-section-break--visible"
+        />
+        <ul class="govuk-list">
+            <li>
+                <a href="www.ons.gov.uk/surveys"
+                    ><strong>www.ons.gov.uk/surveys</strong></a
+                >
+            </li>
+            <li>Freephone: <strong>0800 298 5313</strong></li>
+            <li>
+                Text Relay Service: <strong>(181001) 0800 298 5315?</strong>
+            </li>
+        </ul>
+        <p></p>
     </div>
     <div class="govuk-grid-column-one-third">
-      <h2 class="govuk-heading-m">Also available in</h2>
-      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-      <ul class="govuk-list">
-        <li><a lang="ti" href class="govuk-link">ቲግሬይንያዊ</a></li>
-        <li><a lang="bn" href class="govuk-link">বাংলা</a></li>
-        <li><a lang="pt" href class="govuk-link">Português</a></li>
-        <li><a lang="pl" href class="govuk-link">Polskim</a></li>
-        <li><a lang="ro" href class="govuk-link">Română</a></li>
-        <li><a lang="en" href class="govuk-link">English</a></li>
-        <li><a lang="cy" href class="govuk-link">Cymraeg</a></li>
-      </ul>
+        <h2 class="govuk-heading-m">Also available in</h2>
+        <hr
+            class="govuk-section-break govuk-section-break--m govuk-section-break--visible"
+        />
+        <ul class="govuk-list">
+            <li><a lang="ti" href class="govuk-link">ቲግሬይንያዊ</a></li>
+            <li><a lang="bn" href class="govuk-link">বাংলা</a></li>
+            <li><a lang="pt" href class="govuk-link">Português</a></li>
+            <li><a lang="pl" href class="govuk-link">Polskim</a></li>
+            <li><a lang="ro" href class="govuk-link">Română</a></li>
+            <li><a lang="en" href class="govuk-link">English</a></li>
+            <li><a lang="cy" href class="govuk-link">Cymraeg</a></li>
+        </ul>
     </div>
-  </div>
+</div>
 
 {% endblock %}
-
-
-
-
-
