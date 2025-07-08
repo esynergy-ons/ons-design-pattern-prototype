@@ -48,11 +48,7 @@
         <div class="ons-grid">
             <div class="ons-grid__col ons-col-8@m ">
                 <div class="ons-pl-col">
-                    <h1 class="ons-u-fs-=xl">...remaining survey sections completed</h1>
-
-                    <p>
-                       The respondent checks their answers at the end of each section and returns to the task list where the status has updated. This occurs until each section is complete. 
-                    </p>
+                    <h1 class="ons-u-fs-=xl">Remaining survey questions answered until the respondent reaches a problem...</h1>
                     {% from "components/details/_macro.njk" import onsDetails %}
 
                     {% from "components/button/_macro.njk" import onsButton %}
@@ -62,7 +58,7 @@
                             onsButton({
                                 "text": "Continue",
                                 "iconType": "false",
-                                "url": "task-list-4"
+                                "url": "how-satisfied"
                             })
                         }}
                     

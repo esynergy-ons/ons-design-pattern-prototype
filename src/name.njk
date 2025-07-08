@@ -29,6 +29,13 @@
 
 {% block main %}
 
+    {% from "components/panel/_macro.njk" import onsPanel %}
+    {{
+        onsPanel({
+            "body": '<p>Thanks for confirming your email address</p>'
+        })
+    }}
+
     {%
         call onsQuestion({
             "title": "What is your name?",
