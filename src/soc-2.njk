@@ -47,38 +47,79 @@
 <div class="ons-grid">
     <div class="ons-grid__col ons-col-8@m ">
         <div class="ons-pl-col">
-            <div class="ons-page__body">
-            <h1>As a [Job title], what is the main activity you do?</h1>
-            <p>In a few words describe your job, for example, a dog walker:<br>Exercising and caring for dogs</p>
+            <div class="ons-question ons-u-mb-xl">
 
-        {% from "components/input/_macro.njk" import onsInput %}
-            {{
-                onsInput({
-                    "id": "text-example-input-with-description",
-                    "label": {
-                        "text": "Main job activity"                    }
-                })
-            }}
-
-        <br>
-        {{
-            onsDetails({
-                "id": "details-example",
-                "title": "Why your answer is important",
-                "content": "<p>The ONS asks for your main job activity to understand what jobs people do. This helps plan training, support fair pay, and improve job opportunities. Your answer is private and only used to help improve services.</p>"
-            })
-        }}
-        <br>
-        {% from "components/button/_macro.njk" import onsButton %}
-        {{
-            onsButton({
-                "text": "Save and continue",
-                "url": 'soc-2b',
-                "iconType": 'false'
-            })
-        }}
+                {%
+                    call onsQuestion({
+                        "title": "Generative question?",
+                        "legendIsQuestionTitle": true
+                    })
+                %}
+                {{
+                    onsRadios({
+                        "dontWrap": true,
+                        "name": "satisfaction",
+                        "or": "Or",
+                        "radios": [
+                            {
+                                "id": "E-commerce-Manager",
+                                "label": { "text": "Additional context #1"
+                                },
+                                "value": "E-commerce Manager"
+                            },
+                            {
+                                "id": "Brand-Manager",
+                                "label": {
+                                    "text": "Additional context #2"
+                                },
+                                "value": "Brand Manager"
+                            },
+                            {
+                                "id": "Media-Planner",
+                                "label": {
+                                    "text": "Additional context #3"
+                                },
+                                "value": "Media Planner"
+                            },
+                            {
+                                "id": "no-example-radio-with-visible-text",
+                                "label": {
+                                    "text": "Other"
+                                },
+                                "value": "no",
+                                "other": {
+                                    "open": true,
+                                    "otherType": "input",
+                                    "id": "no-textbox-example-radio-with-visible-text",
+                                    "name": "no-answer",
+                                    "label": {
+                                        "text": "Describe the main activity of your job in a few words"
+                                    }
+                                }
+                            }
+                        ]
+                    })
+                }}
+                {% endcall %}
+                {{
+                    onsDetails({
+                        "id": "details-example",
+                        "title": "Why we ask this question",
+                        "content": "
+                            <p>ONS needs to sort jobs into standard groups so everyone uses the same definitions. This allows us to see how different jobs are changing over time — like which jobs are growing or shrinking. The government uses this info to plan things like training programs, education, and immigration rules.</p>
+                        "
+                    })
+                }}
+                <br>
+                {% from "components/button/_macro.njk" import onsButton %}
+                {{
+                    onsButton({
+                        "text": "Save and continue",
+                        "url": 'soc-3',
+                        "iconType": 'false'
+                    })
+                }}
         </div>
-        </div>
-        </div>
-        </div>
+    </div>
+</div>
 {% endblock %}

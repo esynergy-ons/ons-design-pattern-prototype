@@ -1,0 +1,67 @@
+---
+group: Examples
+title: Example prototype
+layout: example/views/_main
+---
+{% from "components/date-input/_macro.njk" import onsDateInput %}
+{% from "components/button/_macro.njk" import onsButton %}
+
+{% set prevPage = "name" %}
+{% set formActionURL = pageInfo.rootPath + "/salary.html" %}
+
+{% block bodyStart %}
+    {# The 'js-question-no-summary' class has been added to the form to hide this question from the summary. 
+    You can also add 'js-multiple-line-answer' class if you want to return your answers in multiple lines. #}
+    <form class="form-class js-question-no-summary" method="GET" autocomplete="off" novalidate action="{{ formActionURL }}">
+{% endblock %}
+
+{% block main %}
+    <h1>When were you born?</h1>
+
+    {{
+        onsDateInput({
+            "id": "date",
+            "legendOrLabel": "Date of birth",
+            "description": "For example, 31 3 1980",
+            "day": {
+                "label": {
+                    "text": "Day"
+                },
+                "name": "day",
+                "attributes": {
+                    "autocomplete": "bday-day"
+                }
+            },
+            "month": {
+                "label": {
+                    "text": "Month"
+                },
+                "name": "month",
+                "attributes": {
+                    "autocomplete": "bday-month"
+                }
+            },
+            "year": {
+                "label": {
+                    "text": "Year"
+                },
+                "name": "year",
+                "attributes": {
+                    "autocomplete": "bday-year"
+                }
+            }
+        })
+    }}
+
+    {{
+        onsButton({
+            "text": "Save and continue",
+            "classes": "ons-u-mt-l"
+        })
+    }}
+{% endblock %}
+
+{% block bodyEnd %}
+    </form>
+    <script src="/prototypes/example/index.js"></script>
+{% endblock %}
