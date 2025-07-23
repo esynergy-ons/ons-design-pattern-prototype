@@ -13,7 +13,7 @@
     "header": {
         "title": "Household Assets Survey"
         },
-    "title": "Household Assets Survey",
+    "title": "Household asset survey",
     "footer": {
         "OGLLink": {
             "pre": 'All content is available under the',
@@ -33,16 +33,15 @@
         <h1>Thank you for taking part in the Household Assets Survey (HAS).</h1>
 
           <p>HAS helps us understand how people in Great Britain manage their money — including savings, debts, and plans for retirement.</p>
-
-      <div class="ons-panel ons-panel--info ons-panel--no-title">
-        <span class="ons-panel__assistive-text ons-u-vh">Important information: </span>
-        <div class="ons-panel__body">
-          <h3>The new ONS survey app is now available</h3>
-          
-          <div style="width:3rem"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 54 54">
-          <defs>
-            <style>
-              .cls-1 {
+          <div class="ons-panel ons-panel--info ons-panel--no-title">
+              <span class="ons-panel__assistive-text ons-u-vh">Important information: </span>
+              <div class="ons-panel__body">
+                <h3>The new ONS survey app is now available</h3>
+                
+                <div style="width:3rem"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 54 54">
+                  <defs>
+                    <style>
+                      .cls-1 {
                         fill: #a9be3b;
                       }
 
@@ -85,15 +84,7 @@
           </ul>
           <h2>Your privacy</h2>
           <p>All your answers are confidential and used only for research and statistics. Your information is protected by law.</p>
-          {% from "components/button/_macro.njk" import onsButton %}
-          {{
-              onsButton({
-                  "text": "Start survey",
-                  "url": "access-code",
-                  "noIcon": "true"
-              })
-          }}
-          <br><br>
+
           <h2>Need to update your contact details?</h2>
           <p>If you move or your contact information changes, please email:</p>
           <p><a href="mailto:has.contacts@ons.gov.uk">has.contacts@ons.gov.uk</a></p>
@@ -108,5 +99,12 @@
       </div>
     </div>
   </div>
+  <br>
+    {% from "components/button/_macro.njk" import onsButton %}
+    {{
+        onsButton({
+            "text": "Access study",
+            "url": "access-code"
+        })
+    }}
 {% endblock %}
-

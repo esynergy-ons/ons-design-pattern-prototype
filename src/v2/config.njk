@@ -1,0 +1,257 @@
+{% extends "layout/_template.njk" %}
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Assets Survey",
+        "signoutButton": {
+        "text": "Save and sign out"}
+        },
+    "title": "Household Assets Survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+{% block preMain %}
+        {{
+            onsBreadcrumbs({
+                "ariaLabel": 'Back',
+                "itemsList": [
+                    {
+                        "url": 'config-1',
+                        "id": 'back',
+                        "text": 'Back'
+                    }
+                ]
+            })
+        }}
+    {% endblock %}
+{% block main %}
+<div class="ons-page__body">
+    <div class="ons-grid">
+        <div class="ons-grid__col ons-col-8@m ">
+            <h1 class="ons-u-mt-l">We value your time and information that you provide us</h1>
+
+            <p>This survey covers a wide range of personal and financial questions. The more you tell us about your sitution, the more we'll credit your voucher when you finish.</p>
+            <p>In addition to your voucher, we'll also provide you with a download or printable version of your survey result for your own records.</p>           
+        </div>
+    </div>
+</div>
+
+{% from "components/checkboxes/_checkbox-macro.njk" import onsCheckbox %}
+
+<div class="ons-grid ons-grid-flex ons-grid-flex--between">
+    <div class="ons-grid__col">
+        <h1 class="ons-u-fs-l u-mb-2xs" name="page-manage-account-title">{{ name }}</h1>
+    </div>
+</div>
+
+<div class="ons-grid ons-grid-flex ons-grid-flex--between">
+    <div class="ons-grid__col">
+        <h2 class="ons-u-fs-m u-mb-2xs" name="page-manage-account-subtitle">Select all question areas that apply to [Respondent #1 name]</h2>
+    </div>
+</div>
+
+<form id="user-permissions" action="" method="post">
+    <input type="hidden" name="csrf_token" value="" />
+    <section class="ons-u-mt-s">
+        <table id="tbl-users" class="ons-table">
+            <thead class="ons-table__head">
+                <tr class="ons-table__row">
+                    <th scope="col" class="ons-table__header">
+                        <span>Survey area</span>
+                    </th>
+                    <th scope="col" class="ons-table__header">
+                        <span>Included</span>
+                    </th>
+                    <th scope="col" class="ons-table__header">
+                        <span>Voucher amount (£30)</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="ons-table__body">
+                <tr class="ons-table__row">
+                    <td class="ons-table__cell">About you and your household</td>
+                    <td class="ons-table__cell">
+                        {{
+                            onsCheckbox({
+                                "id": "reporting-units-view-example-checkbox-with-hidden-label",
+                                "hideLabel": true,
+                                "label": {
+                                    "text": "View reporting units"
+                                },
+                                "value": "y",
+                                "checked": true,
+                                "disabled": true
+                            })
+                        }}
+                    </td>
+                    <td class="ons-table__cell">&mdash;</td>
+                </tr>
+                <tr class="ons-table__row">
+                    <td class="ons-table__cell">Work and employment</td>
+                    <td class="ons-table__cell">
+                        {{
+                            onsCheckbox({
+                                "id": "reporting-units-view-example-checkbox-with-hidden-label",
+                                "hideLabel": true,
+                                "label": {
+                                    "text": "View reporting units"
+                                },
+                                "value": "y",
+                                "checked": true,
+                                "disabled": true
+                            })
+                        }}
+                    </td>
+                    <td class="ons-table__cell">&mdash;</td>
+                </tr>
+                <tr class="ons-table__row">
+                    <td class="ons-table__cell">Your home and household bills</td>
+                    <td class="ons-table__cell">
+                        {{
+                            onsCheckbox({
+                                "id": "reporting-units-view-example-checkbox-with-hidden-label",
+                                "hideLabel": true,
+                                "label": {
+                                    "text": "View reporting units"
+                                },
+                                "value": "y",
+                                "checked": true,
+                                "disabled": true
+                            })
+                        }}
+                    </td>
+                    <td class="ons-table__cell">&mdash;</td>
+                </tr>
+                <tr class="ons-table__row">
+                    <td class="ons-table__cell">Bank savings</td>
+                    <td class="ons-table__cell">
+                        {{
+                            onsCheckbox({
+                                "id": "reporting-units-view-example-checkbox-with-hidden-label",
+                                "hideLabel": true,
+                                "label": {
+                                    "text": "View reporting units"
+                                },
+                                "value": "y",
+                                "checked": true,
+                                "disabled": true
+                            })
+                        }}
+                    </td>
+                    <td class="ons-table__cell">&mdash;</td>
+                </tr>
+                <tr class="ons-table__row">
+                    <td class="ons-table__cell">Investments</td>
+                    <td class="ons-table__cell">
+                        {{
+                            onsCheckbox({
+                                "id": "messages-view-example-checkbox-with-hidden-label",
+                                "hideLabel": true,
+                                "label": {
+                                    "text": "View messages"
+                                },
+                                "value": "y",
+                                "checked": true
+                            })
+                        }}
+                    </td>
+                    <td class="ons-table__cell">£2</td>
+                </tr>
+                <tr class="ons-table__row">
+                    <td class="ons-table__cell">Pensions</td>
+                    <td class="ons-table__cell">
+                        {{
+                            onsCheckbox({
+                                "id": "messages-view-example-checkbox-with-hidden-label",
+                                "hideLabel": true,
+                                "label": {
+                                    "text": "View messages"
+                                },
+                                "value": "y",
+                                "checked": true
+                            })
+                        }}
+                    </td>
+                    <td class="ons-table__cell">£6</td>
+                </tr>
+                <tr class="ons-table__row">
+                    <td class="ons-table__cell">Foreign assets</td>
+                    <td class="ons-table__cell">
+                        {{
+                            onsCheckbox({
+                                "id": "messages-view-example-checkbox-with-hidden-label",
+                                "hideLabel": true,
+                                "label": {
+                                    "text": "View messages"
+                                },
+                                "value": "y",
+                                "checked": true
+                            })
+                        }}
+                    </td>
+                    <td class="ons-table__cell">£2</td>
+                </tr>
+                <tr class="ons-table__row">
+                    <td class="ons-table__cell">Inheritance</td>
+                    <td class="ons-table__cell">
+                        {{
+                            onsCheckbox({
+                                "id": "messages-view-example-checkbox-with-hidden-label",
+                                "hideLabel": true,
+                                "label": {
+                                    "text": "View messages"
+                                },
+                                "value": "y",
+                                "checked": true
+                            })
+                        }}
+                    </td>
+                    <td class="ons-table__cell">£3</td>
+                </tr>
+                <tr class="ons-table__row">
+                    <td class="ons-table__cell">Debt and bankrupcy</td>
+                    <td class="ons-table__cell">
+                        {{
+                            onsCheckbox({
+                                "id": "messages-view-example-checkbox-with-hidden-label",
+                                "hideLabel": true,
+                                "label": {
+                                    "text": "View messages"
+                                },
+                                "value": "y",
+                                "checked": true
+                            })
+                        }}
+                    </td>
+                    <td class="ons-table__cell">£7</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</form>
+<hr>
+<br>
+{{
+    onsButton({
+        "text": "Create my survey",
+        "iconType": "false",
+        "url": "task-list-1"
+    })
+}}
+{% endblock %}

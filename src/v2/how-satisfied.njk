@@ -1,0 +1,84 @@
+{% extends "layout/_template.njk" %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/input/_macro.njk" import onsInput %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/feedback/_macro.njk" import onsFeedback %}
+{% from "components/button/_macro.njk" import onsButton %}
+
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Assets Survey",
+        "signoutButton": {
+        "text": "Save and sign out"}
+        },
+    "title": "Household Assets Survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+{% block main %}
+    <div class="ons-page__body">
+        <div class="ons-grid">
+            <div class="ons-grid__col ons-col-8@m ">
+            {% from "components/feedback/_macro.njk" import onsFeedback %}
+            {%
+                call onsQuestion({
+                    "title": "Overall, how satisfied are you with your life nowadays? ",
+                    "description": "<p>Where 0 is 'Not at all satisfied' and 10 is 'Completely satisfied'</p>",
+                    "justification": {
+                        "title": "Why we ask this question",
+                        "content": "<p>The ONS asks how satisfied you are with your life to understand how people are feeling across the UK. This helps improve services, support mental health, and show where help is needed. Your answer is private and used only to help make life better for everyone.</p>"
+                    }
+                })
+            %}
+            {{
+                onsInput({
+                    "id": "satisfaction",
+                    "name": "satisfaction",
+                    "type": "number",
+                    "width": "2",
+                    "label": {
+                        "text": "Satisfaction level"
+                    }
+                })
+            }}
+            {% endcall %}
+            <div class="ons-btn-group">
+                {{
+                    onsButton({
+                        "text": 'Save and continue',
+                        "url": 'task-list-4',
+                        "iconType": false
+                    })
+                }}
+                {{
+                    onsButton({
+                        "type": 'button',
+                        "text": 'Skip this question',
+                        "name": 'example',
+                        "variants": 'secondary'
+                    })
+                }}
+            </div>
+            </div>
+            <div class="ons-grid__col ons-col-4@m">
+                {{
+                    onsFeedback({
+                        "heading": "Need a hand?",
+                        "headingClasses": 'test',
+                        "content": "Many people pause at this question. It's okay to skip or take a break if you need to. Your answers really help shape support services. If you need help with this question you can:",
+                        "linkUrl": "#0",
+                        "linkText": "Chat with an advisor, you are 2nd in the queue"
+                    })
+                }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

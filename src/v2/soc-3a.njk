@@ -1,0 +1,123 @@
+{% extends "layout/_template.njk" %}
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+{% from "components/input/_macro.njk" import onsInput %}
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Assets Survey",
+        "signoutButton": {
+        "text": "Save and sign out"}
+        },
+    "title": "Household Assets Survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+{% block preMain %}
+    {{
+        onsBreadcrumbs({
+            "ariaLabel": 'Back',
+            "itemsList": [
+                {
+                    "url": 'soc-2b',
+                    "id": 'back',
+                    "text": 'Back'
+                }
+            ]
+        })
+    }}
+{% endblock %}
+{% from "components/input/_macro.njk" import onsInput %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+
+{% block main %}
+
+{% from "components/message/_macro.njk" import onsMessage %}
+{% from "components/description-list/_macro.njk" import onsDescriptionList %}
+{% from "components/reply/_macro.njk" import onsReply %}
+
+<div class="ons-grid">
+    <div class="ons-grid__col ons-col-8@m">
+        <section role="region" aria-label="Conversation: BRES 2017 clarification required for Bolts &amp; Ratchets Ltd">
+            <h1 class="ons-u-fs-xl">As a [Job title], what is the main activity you do?</h1>
+            <hr>
+            <br>
+            <br>
+            {%
+                call onsMessage({
+                    "variant": 'sent',
+                    "fromLabel": 'From',
+                    "fromValue": 'ONS surveys',
+                    "sentLabel": 'Sent',
+                    "sentValue": 'Today at 12:56'
+                })
+            %}
+                <p>
+                    Hi [first name]<br />
+                    <br />
+                    Can you tell me a little more about the work you do?
+                    <br />
+                    <br>
+                    
+                    Julie Carter<br />
+                    ONS Survey Team
+                </p>
+            {% endcall %}
+
+           {%
+                call onsMessage({
+                    "variant": 'received',
+                    "fromLabel": 'From',
+                    "fromValue": '[Respondent #1 name]',
+                    "sentLabel": 'Sent',
+                    "sentValue": 'Today at 12:57'
+                })
+            %}
+                <p>
+                    Hi Julie<br />
+                    Sure, what do yo uneed to know?
+                </p>
+            {% endcall %}
+            {{
+                onsReply({
+                    "textarea": {
+                        "id": "reply-example-conversation",
+                        "name": "reply",
+                        "label": {
+                            "text": "Reply",
+                            "description": "Maximum 300 characters"
+                        },
+                        "rows": 3,
+                        "charCheckLimit": {
+                            "limit": 300,
+                            "charCountSingular": "You have {x} character remaining",
+                            "charCountPlural": "You have {x} characters remaining"
+                        }
+                    },
+                    "button": {
+                        "type": 'button',
+                        "text": 'Send message'
+                    },
+                    "closeLinkText": 'Close conversation and continue survey',
+                    "closeLinkUrl": 'interstitial-2'
+                })
+            }}
+        </section>
+    </div>
+</div>
+
+{% endblock %}

@@ -10,14 +10,13 @@
 {% from "components/radios/_macro.njk" import onsRadios %}
 {% from "components/address-output/_macro.njk" import onsAddressOutput %}
 {% from "components/input/_macro.njk" import onsInput %}
-
 {% set pageConfig = { 
     "header": {
-        "title": "Household Assets Survey",
+        "title": "Household assets survey",
         "signoutButton": {
         "text": "Save and sign out"}
         },
-    "title": "Household Assets Survey",
+    "title": "Household asset survey",
     "footer": {
         "OGLLink": {
             "pre": 'All content is available under the',
@@ -34,7 +33,7 @@
             "ariaLabel": 'Back',
             "itemsList": [
                 {
-                    "url": '/',
+                    "url": 'example-address-input-non-editable',
                     "id": 'back',
                     "text": 'Back'
                 }
@@ -42,42 +41,48 @@
         })
     }}
 {% endblock %}
+{% from "components/input/_macro.njk" import onsInput %}
+{% from "components/question/_macro.njk" import onsQuestion %}
 
 {% block main %}
 <div class="ons-grid">
     <div class="ons-grid__col ons-col-8@m ">
-        <div class="ons-pl-col">
-            <div class="ons-question ons-u-mb-xl">
-                <h1 class="ons-fieldset__legend-title">What is your main job?</h1>
-                {{
-                    onsInput({
-                        "id": "text-example-input-with-description",
-                        "size": "50",
-                        "label": {
-                            "text": ""                    }
-                    })
-                }}
-                <br>
-                {{
-                    onsDetails({
-                        "id": "details-example",
-                        "title": "Why we ask this question",
-                        "content": "
-                            <p>ONS needs to sort jobs into standard groups so everyone uses the same definitions. This allows us to see how different jobs are changing over time — like which jobs are growing or shrinking. The government uses this info to plan things like training programs, education, and immigration rules.</p>
-                        "
-                    })
-                }}
-                <br>
-                {% from "components/button/_macro.njk" import onsButton %}
+      <div class="ons-pl-col">
+    <div class="ons-page__body">
+        <h1 class="ons-u-fs-xl">As a [Job title], what is the main activity you do?</h1>
+
+        {% from "components/panel/_macro.njk" import onsPanel %}
+        {{
+            onsPanel({
+                "body": '
+                <p>To help us understand your job better, we would like to follow up with this question.</p>
+                <p>An online advisor will be available in 2 minutes or they can contact you by [my preference].</p>
+                '
+            })
+        }}
+        <p>
+            
+        </p>
+        <br>
+        <div class="ons-btn-group">
                 {{
                     onsButton({
-                        "text": "Save and continue",
-                        "url": 'soc-2',
-                        "iconType": 'false'
+                        "text": 'Continue'
+                    })
+                }}
+                {{
+                    onsButton({
+                        "type": 'button',
+                        "text": 'No thanks, I want to skip this question',
+                        "name": 'email',
+                        "variants": 'secondary'
                     })
                 }}
             </div>
-        </div>
     </div>
-</div>
+    </div>
+    </div>
+    </div>
 {% endblock %}
+
+            

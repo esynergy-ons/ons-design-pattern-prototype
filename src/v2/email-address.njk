@@ -1,0 +1,86 @@
+{% extends "layout/_template.njk" %}
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Assets Survey"
+        },
+        "title": "Household Assets Survey",
+        "footer": {
+            "OGLLink": {
+                "pre": 'All content is available under the',
+                "link": 'Open Government Licence v3.0',
+                "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+                "post": ', except where otherwise stated'
+            }
+        }
+    } %}
+
+    {% block main %}
+        <div class="ons-grid">
+            <div class="ons-grid__col ons-col-8@m ">
+              <div class="ons-pl-col">
+                <h1>Enter your email address</h1>
+
+          <br>
+            {% from "components/input/_macro.njk" import onsInput %}
+            {{
+                onsInput({
+                    "id": "email-example-input-email",
+                    "type": "email",
+                    "autocomplete": "email",
+                    "label": {
+                        "text": "Email address",
+                        "description": "We'll send you a link to confirm your email address"
+                    }
+                })
+            }}
+
+            <br>
+            <p>Providing your email address allows us to know we're talking to with the right person and will save you time when completing other surveys. We never share your email with anyone.</p>
+
+            <br>
+
+            {% from "components/button/_macro.njk" import onsButton %}
+
+            <div class="ons-btn-group">
+                {{
+                    onsButton({
+                        "text": "Save and continue",
+                        "iconType": "false",
+                        "url": "check-email"
+                    })
+                }}
+                {{
+                    onsButton({
+                        "type": 'button',
+                        "text": 'Skip this step',
+                        "name": 'email',
+                        "variants": 'secondary',
+                        "url": 'name',
+                        "iconType": 'false'
+                    })
+                }}
+            </div>
+            <br>
+    
+            <h2>Or sign in using another service</h2>
+            <ul class="ons-list ons-list--bare">
+                <li class="ons-list__item"><a href="#" target="_blank">Continue with GOV.UK One login</a></li>
+                <li class="ons-list__item"><a href="#" target="_blank">Continue with NHS login</a></li>
+                <li class="ons-list__item"><a href="#" target="_blank">Continue with Google</a></li>
+                <li class="ons-list__item"><a href="#" target="_blank">Continue with Microsoft Account</a></li>
+                <li class="ons-list__item"><a href="#" target="_blank">Continue with Apple</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

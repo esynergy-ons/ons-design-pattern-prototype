@@ -34,7 +34,7 @@
             "ariaLabel": 'Back',
             "itemsList": [
                 {
-                    "url": 'soc-1',
+                    "url": 'soc-2',
                     "id": 'back',
                     "text": 'Back'
                 }
@@ -47,11 +47,23 @@
 <div class="ons-grid">
     <div class="ons-grid__col ons-col-8@m ">
         <div class="ons-pl-col">
-            <div class="ons-question ons-u-mb-xl">
+            <div class="ons-page__body">
+                <h1 class="ons-u-fs-xl">As a [Job title], what is the main activity you do?</h1>
+
+                {% from "components/panel/_macro.njk" import onsPanel %}
+                {{
+                    onsPanel({
+                        "body": '
+                        <p>We would like to follow up with you about this question to help us understand your job better.</p>
+                        <p>An advisor will be available online in 2 minutes, or we can contact you by [my contact preference].</p>
+                        '
+                    })
+                }}
+
 
                 {%
                     call onsQuestion({
-                        "title": "Generative question?",
+                        "title": "",
                         "legendIsQuestionTitle": true
                     })
                 %}
@@ -62,64 +74,45 @@
                         "or": "Or",
                         "radios": [
                             {
-                                "id": "E-commerce-Manager",
-                                "label": { "text": "Additional context #1"
+                                "id": "very-satisfied",
+                                "label": {
+                                    "text": "I'll wait for a web chat advisor"
                                 },
-                                "value": "E-commerce Manager"
+                                "value": "very-satisfied"
                             },
                             {
-                                "id": "Brand-Manager",
+                                "id": "somewhat-satisfied",
                                 "label": {
-                                    "text": "Additional context #2"
+                                    "text": "Contact me later by [my contact preference]"
                                 },
-                                "value": "Brand Manager"
+                                "value": "somewhat-satisfied"
                             },
                             {
-                                "id": "Media-Planner",
+                                "id": "no",
                                 "label": {
-                                    "text": "Additional context #3"
+                                    "text": "I want to skip this question"
                                 },
-                                "value": "Media Planner"
-                            },
-                            {
-                                "id": "no-example-radio-with-visible-text",
-                                "label": {
-                                    "text": "Other"
-                                },
-                                "value": "no",
-                                "other": {
-                                    "open": true,
-                                    "otherType": "input",
-                                    "id": "no-textbox-example-radio-with-visible-text",
-                                    "name": "no-answer",
-                                    "label": {
-                                        "text": "Describe the main activity of your job in a few words"
-                                    }
-                                }
+                                "value": "no"
                             }
                         ]
                     })
                 }}
-                {% endcall %}
-                {{
-                    onsDetails({
-                        "id": "details-example",
-                        "title": "Why we ask this question",
-                        "content": "
-                            <p>ONS needs to sort jobs into standard groups so everyone uses the same definitions. This allows us to see how different jobs are changing over time — like which jobs are growing or shrinking. The government uses this info to plan things like training programs, education, and immigration rules.</p>
-                        "
-                    })
-                }}
+            {% endcall %}
+
                 <br>
-                {% from "components/button/_macro.njk" import onsButton %}
-                {{
-                    onsButton({
-                        "text": "Save and continue",
-                        "url": 'soc-3',
-                        "iconType": 'false'
-                    })
-                }}
+                <div class="ons-btn-group">
+                    {{
+                        onsButton({
+                            "text": 'Continue',
+                            "url": 'soc-3',
+                            "iconType": 'false'
+                        })
+                    }}
+                </div>
+            </div>
         </div>
     </div>
 </div>
 {% endblock %}
+
+            

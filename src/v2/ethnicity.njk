@@ -1,0 +1,184 @@
+{% extends "layout/_template.njk" %}
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Asset Survey",
+        "signoutButton": {
+        "text": "Save and sign out"}
+        },
+    "title": "Household Asset Survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+{% block preMain %}
+        {{
+            onsBreadcrumbs({
+                "ariaLabel": 'Back',
+                "itemsList": [
+                    {
+                        "url": 'section-1',
+                        "id": 'back',
+                        "text": 'Back'
+                    }
+                ]
+            })
+        }}
+    {% endblock %}
+
+{% block main %}
+<div class="ons-page__body">
+    <div class="ons-grid">
+        <div class="ons-grid__col ons-col-8@m">
+            {%
+                call onsQuestion({
+                    "title": "What is your ethnic group or background?",
+                    "classes": "ons-u-mt-no",
+                    "legendIsQuestionTitle": true
+                })
+            %}
+
+            {{
+                onsDetails({
+                    "id": "details-example",
+                    "title": "Why your answer is important",
+                    "content": "<p>The ONS asks about ethnicity to understand the UK’s diverse population. This helps make sure public services like healthcare, schools, and housing meet everyone’s needs, and that resources are shared fairly. It also helps spot and reduce inequality. Your answers are kept private and only used to improve services.</p>"
+                })
+            }}
+                {{
+                    onsRadios({
+                        "dontWrap": true,
+                        "name": "ethnicity",
+                        "dontWrap": true,
+                        "or": "Or",
+                        "radios": [
+                            {
+                                "id": "asian-example-radio-with-description",
+                                "label": {
+                                    "text": "Asian or Asian British",
+                                    "description": "Includes Indian, Pakistani, Bangladeshi, Chinese or any other Asian background"
+                                },
+                                "name": "asian"
+                            },
+                            {
+                                "id": "mixed-example-radio-with-description",
+                                "label": {
+                                    "text": "Mixed or Multiple ethnic groups",
+                                    "description": "Includes White and Black Caribbean, White and Black African, White and Asian or any other Mixed or Multiple background"
+                                },
+                                "name": "mixed"
+                            },
+                            {
+                                "id": "white-example-radio-with-description",
+                                "label": {
+                                    "text": "White",
+                                    "description": "Includes British, Northern Irish, Irish, Gypsy, Irish Traveller, Roma or any other White background"
+                                },
+                                "name": "white"
+                            },
+                            
+                            
+                            {
+                                "id": "black-example-radio-with-description",
+                                "label": {
+                                    "text": "Black, Black British, Caribbean or African",
+                                    "description": "Includes Black British, Caribbean, African or any other Black background"
+                                },
+                                "name": "black"
+                            },
+                            {
+                                "id": "other-example-radio-with-description",
+                                "label": {
+                                    "text": "Other ethnic group",
+                                    "description": "Includes Arab or any other ethnic group"
+                                },
+                                "name": "other"
+                            },
+                            {
+                                "id": "no",
+                                "label": {
+                                    "text": "Prefer not to say"
+                                },
+                                "value": "no"
+                            }
+                        ]
+                    })
+                }}
+                {% endcall %}
+                <div class="ons-btn-group">
+                    {{
+                        onsButton({
+                            "text": "Continue",
+                            "iconType": "false",
+                            "url": "interstitial-1"
+                        })
+                    }}
+                    <!--{{
+                        onsButton({
+                            "type": 'button',
+                            "text": 'Skip this question',
+                            "url": "section-2",
+                            "iconType": 'false',
+                            "variants": 'secondary'
+                        })
+                    }}-->
+                </div>
+        </div>
+        <div class="ons-grid__col ons-col-4@m ">
+            <!--<div class="ons-pl-grid-col">
+                <div style="width:6rem; float:right">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 88 88" style="enable-background:new 0 0 88 88;" xml:space="preserve">
+                    <style type="text/css">
+                        .st0{fill:#E5EBEE;}
+                        .st1{fill:#003C57;}
+                        .st2{fill:#FFFFFF;}
+                        .st3{fill:#4D7789;}
+                    </style>
+                    <g id="Circle">
+                        <circle class="st0" cx="44" cy="44" r="44"/>
+                    </g>
+                    <g id="Artwork_64x64">
+                        <path class="st1" d="M18,28h52c1.1,0,2,0.9,2,2v28c0,1.1-0.9,2-2,2H18c-1.1,0-2-0.9-2-2V30C16,28.9,16.9,28,18,28z"/>
+                        <circle class="st2" cx="43.9" cy="44" r="10"/>
+                        <path class="st1" d="M44.6,38.1c1,0,1.9,0.2,2.8,0.6l-0.7,1.6c-0.6-0.3-1.3-0.4-1.9-0.5c-0.3,0-0.6,0.1-0.9,0.3
+                            c-0.2,0.3-0.3,0.6-0.3,0.9v1.4h2.7v1.6h-2.7v1c0,0.8-0.4,1.4-1.1,1.8h5.1v1.8h-7.5V47c0.4-0.1,0.7-0.4,1-0.7
+                            c0.2-0.3,0.3-0.7,0.3-1.1v-1h-1.3v-1.7h1.3v-1.4c-0.1-0.8,0.2-1.6,0.8-2.2C42.9,38.4,43.7,38.1,44.6,38.1z"/>
+                        <path class="st3" d="M26,48c-5.5,0-10,4.5-10,10s4.5,10,10,10s10-4.5,10-10S31.5,48,26,48z"/>
+                        <path class="st2" d="M26,66.5c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5s8.5,3.8,8.5,8.5C34.5,62.7,30.7,66.5,26,66.5z M26,50.5
+                            c-4.1,0-7.5,3.4-7.5,7.5s3.4,7.5,7.5,7.5s7.5-3.4,7.5-7.5S30.1,50.5,26,50.5L26,50.5z"/>
+                        <path class="st2" d="M26.4,53.1c0.8,0,1.6,0.2,2.4,0.5l-0.6,1.4c-0.5-0.2-1.1-0.4-1.6-0.4c-0.3,0-0.5,0.1-0.7,0.3
+                            c-0.2,0.2-0.3,0.5-0.2,0.8v1.2h2.2v1.3h-2.3v0.9c0,0.6-0.3,1.2-0.9,1.5H29V62h-6.3v-1.5c0.3-0.1,0.6-0.3,0.9-0.6
+                            c0.2-0.3,0.2-0.6,0.2-0.9v-0.9h-1v-1.3h1.1v-1.2c0-0.7,0.2-1.4,0.7-1.9C25,53.3,25.7,53,26.4,53.1z"/>
+                        <polygon class="st2" points="60,32 60,35 65,35 65,40 68,40 68,32    "/>
+                        <polygon class="st2" points="28,32 20,32 20,40 23,40 23,35 28,35    "/>
+                        <polygon class="st2" points="65,48 65,53 60,53 60,56 68,56 68,48    "/>
+                    </g>
+                    </svg>
+                </div>
+                <h3 class="ons-u-fs-m">My wallet: £0</h3>
+                <p>Complete this section to add £2</p>
+            </div>-->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+

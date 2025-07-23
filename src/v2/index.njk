@@ -34,11 +34,35 @@
 
           <p>HAS helps us understand how people in Great Britain manage their money — including savings, debts, and plans for retirement.</p>
 
+          <h2>Why your participation matters</h2>
+          <ul>
+            <li>How households manage their finances</li>
+            <li>The types of assets people hold (like savings or pensions)</li>
+            <li>How people plan for their future</li>
+          </ul>
+
+          <h2>What to expect and how to take part</h2>
+          <ul>
+            <li>You’ll be asked questions about your household finances</li>
+            <li>The survey can be carried out in different ways, for example: online, with an interviewer or a video call</li>
+            <li>It takes place every two years — this helps track changes over time</li>
+          </ul>
+          <h2>Your privacy</h2>
+          <p>All your answers are confidential and used only for research and statistics. Your information is protected by law.</p>
+          {% from "components/button/_macro.njk" import onsButton %}
+          {{
+              onsButton({
+                  "text": "Start survey",
+                  "url": "access-code",
+                  "noIcon": "true"
+              })
+          }}
+          <br><br>
       <div class="ons-panel ons-panel--info ons-panel--no-title">
         <span class="ons-panel__assistive-text ons-u-vh">Important information: </span>
         <div class="ons-panel__body">
           <h3>The new ONS survey app is now available</h3>
-          
+          <p>The app delivers secure access, real‑time notifications and deadline reminders to keep you on track, an easy data upload directly from your device. The app also lets you work without an internet connection—even updating changes when you're back online.</p>
           <div style="width:3rem"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 54 54">
           <defs>
             <style>
@@ -69,30 +93,6 @@
             <p>Download from <a href="#">Google Play Store</a> on Android devices and from the <a href="#">App Store</a> on iOS devices.</p>
               </div>
             </div>
-            <br>
-          <h2>Why your participation matters</h2>
-          <ul>
-            <li>How households manage their finances</li>
-            <li>The types of assets people hold (like savings or pensions)</li>
-            <li>How people plan for their future</li>
-          </ul>
-
-          <h2>What to expect and how to take part</h2>
-          <ul>
-            <li>You’ll be asked questions about your household finances</li>
-            <li>The survey can be carried out in different ways, for example: online, with an interviewer or a video call</li>
-            <li>It takes place every two years — this helps track changes over time</li>
-          </ul>
-          <h2>Your privacy</h2>
-          <p>All your answers are confidential and used only for research and statistics. Your information is protected by law.</p>
-          {% from "components/button/_macro.njk" import onsButton %}
-          {{
-              onsButton({
-                  "text": "Start survey",
-                  "url": "access-code",
-                  "noIcon": "true"
-              })
-          }}
           <br><br>
           <h2>Need to update your contact details?</h2>
           <p>If you move or your contact information changes, please email:</p>

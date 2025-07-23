@@ -1,0 +1,84 @@
+{% extends "layout/_template.njk" %}
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Assets Survey"
+        },
+    "title": "Household Assets Survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+
+    {% block preMain %}
+        {{
+            onsBreadcrumbs({
+                "ariaLabel": 'Back',
+                "itemsList": [
+                    {
+                        "url": 'email-address',
+                        "id": 'back',
+                        "text": 'Back'
+                    }
+                ]
+            })
+        }}
+    {% endblock %}
+
+{% block main %}
+
+    <div class="ons-page__body">
+        <div class="ons-grid">
+            <div class="ons-grid__col ons-col-8@m ">
+              <div class="ons-pl-col">
+                <h1 class="ons-u-fs-xl">Check [email address] for a secure link</h1>
+
+                <p>The link will work for 1 hour.</p>
+                <p>If you didn’t receive an email you can <a href="#">request another</a>.</p>
+
+                {%
+                    call onsDetails({
+                        "id": "survey-interstitial-page-use-details",
+                        "classes": "ons-u-mb-s",
+                        "title": 'Why we ask for your email?',
+                        "button": {
+                            "close": "Hide this"
+                        }
+                    })
+                %}
+                    <p>Providing your email address allows us to keep your data private and will save you time when completing other surveys. We never share your email with anyone.</p>
+                {% endcall %}
+                <br>
+                <div class="ons-btn-group">
+                    {{
+                        onsButton({
+                            "type": 'button',
+                            "text": 'Skip this step',
+                            "name": 'email',
+                            "url": 'name',
+                            "iconType": "false",
+                            "variants": 'secondary'
+                        })
+                    }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

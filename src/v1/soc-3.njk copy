@@ -1,0 +1,87 @@
+{% extends "layout/_template.njk" %}
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+{% from "components/input/_macro.njk" import onsInput %}
+
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Assets Survey",
+        "signoutButton": {
+        "text": "Save and sign out"}
+        },
+    "title": "Household Assets Survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+{% block preMain %}
+    {{
+        onsBreadcrumbs({
+            "ariaLabel": 'Back',
+            "itemsList": [
+                {
+                    "url": 'soc-1',
+                    "id": 'back',
+                    "text": 'Back'
+                }
+            ]
+        })
+    }}
+{% endblock %}
+
+{% block main %}
+<div class="ons-grid">
+    <div class="ons-grid__col ons-col-8@m ">
+        <div class="ons-pl-col">
+ 
+            <h1>In a few words, can you decribe the main activity of your job?</h1>
+
+                {% from "components/input/_macro.njk" import onsInput %}
+                    {{
+                        onsInput({
+                            "id": "text-example-input-with-description",
+                            "type": 'text',
+                            "label": {
+                                "text": ""                    }
+                        })
+                    }}
+
+                <br>
+                {{
+                    onsDetails({
+                        "id": "details-example",
+                        "title": "Why we ask this question",
+                        "content": "
+                            <p>ONS needs to sort jobs into standard groups so everyone uses the same definitions. This allows us to ee how different jobs are changing over time — like which jobs are growing or shrinking.</p>
+                            <p>The government uses this info to plan things like training programs, education, and immigration rules. Researchers also use job data to study things like wages, job types, or the gender pay gap.</p>
+                        "
+                    })
+                }}
+                <br>
+                {% from "components/button/_macro.njk" import onsButton %}
+                {{
+                    onsButton({
+                        "text": "Save and continue",
+                        "url": 'soc-2b',
+                        "iconType": 'false'
+                    })
+                }}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

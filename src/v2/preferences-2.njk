@@ -1,0 +1,123 @@
+{% extends "layout/_template.njk" %}
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+{% from "components/input/_macro.njk" import onsInput %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/checkboxes/_macro.njk" import onsCheckboxes %}
+
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Assets Survey",
+        "signoutButton": {
+        "text": "Save and sign out"}
+        },
+    "title": "Household Assets Survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+{% block preMain %}
+    {{
+        onsBreadcrumbs({
+            "ariaLabel": 'Back',
+            "itemsList": [
+                {
+                    "url": 'preferences-1b',
+                    "id": 'back',
+                    "text": 'Back'
+                }
+            ]
+        })
+    }}
+{% endblock %}
+{% block main %}
+<div class="ons-page__body">
+    <div class="ons-grid">
+        <div class="ons-grid__col ons-col-8@m ">
+
+        {%
+            call onsQuestion({
+                "title": "If we need to contact you when is the best time?",
+                "legendIsQuestionTitle": true,
+                "description": 'We will only contact you if we have a question about the survey.'
+            })
+        %}
+            {{
+                onsCheckboxes({
+                    "checkboxesLabel": "Select all that apply",
+                    "dontWrap": true,
+                    "name": "devices",
+                    "checkboxes": [
+                        {
+                            "id": "anytime",
+                            "label": {
+                                "text": "Any time of day"
+                            },
+                            "value": "Any time of day"
+                        },
+                        {
+                            "id": "Morning",
+                            "label": {
+                                "text": "Morning"
+                            },
+                            "value": "Morning"
+                        },
+                        {
+                            "id": "Afternoon",
+                            "label": {
+                                "text": "Afternoon"
+                            },
+                            "value": "Afternoon"
+                        },
+                        {
+                            "id": "Evening",
+                            "label": {
+                                "text": "Evening"
+                            },
+                            "value": "Evening"
+                        },
+                        {
+                            "id": "Weekday",
+                            "label": {
+                                "text": "Monday to Friday"
+                            },
+                            "value": "Weekday"
+                        },
+                        {
+                            "id": "Weekend",
+                            "label": {
+                                "text": "Saturday or Sunday"
+                            },
+                            "value": "Weekend"
+                        }
+                    ]
+                })
+            }}
+            {% from "components/button/_macro.njk" import onsButton %}
+
+            {% endcall %}
+            {{
+                onsButton({
+                    "text": "Save and continue",
+                    "iconType": "false",
+                    "url": "config1"
+                })
+            }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

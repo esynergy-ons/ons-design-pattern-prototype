@@ -1,0 +1,116 @@
+{% extends "layout/_template.njk" %}
+{% from "components/table-of-contents/_macro.njk" import onsTableOfContents %}
+{% from "components/summary/_macro.njk" import onsSummary %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/list/_macro.njk" import onsList %}
+{% from "components/access-code/_macro.njk" import onsAccessCode %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+{% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/address-output/_macro.njk" import onsAddressOutput %}
+{% set pageConfig = { 
+    "header": {
+        "title": "Household Assets Survey"
+        },
+    "title": "Household Assets Survey",
+    "footer": {
+        "OGLLink": {
+            "pre": 'All content is available under the',
+            "link": 'Open Government Licence v3.0',
+            "url": 'https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/',
+            "post": ', except where otherwise stated'
+        }
+    }
+} %}
+
+{% block main %}
+<div class="ons-grid">
+    <div class="ons-grid__col ons-col-7@m ">
+        <section id="section1">
+            <h1>
+              ኣብ ዳህሳስ ንብረት ገዛ ተሳተፉ
+            </h1>
+            <p>
+              ጡረታን ይርኣብ ዳህሳስ ንብረት ገዛ ተሳተፉ
+              ኢ። መልስታትካ ኣብ መላእ ዓዲ እንግሊዝ እንታይ ይፍጸም ከምዘሎ ንምርዳእ ይሕግዘና፣ ኣብ ከም ብተመጣጣኒ ዋጋ ዝሽየጥ ገዛውቲ ዝኣመሰሉ ነገራት ውሳኔታት ምሕባርን ሰባት ንጡረታኦም እንታይ ደገፍ ከምዘድልዮምን ይሕብሩ።.
+            </p>
+            <p>
+              እዚ መጽናዕቲ ብዛዕባ ዝኾነ ሰብ ኣብቲ ገዛ ዝኾነ ሰብ ሕቶታት ክሓትት እዩ። ኩሉ ኣብ ገዛኻ ዘሎ ነፍሲ ወከፍኒ ነቲ እንሰደደካ ደብዳቤታትን ወረቓቕትን ክርኢ ኣገዳሲ እዩ።
+            </p>
+            <p>
+              መልስታትካ ንመጻኢ ዓባይ ብሪጣንያ ንምቕራጽ ክሕግዝ እዩ።
+            </p>
+            <p>
+              እቲ እትህበና ሓበሬታ ብሕጊ ዝተሓለወ ኮይኑ ከም ምስጢራዊ እዩ ዝሕዞ።
+            </p>
+            <h2>
+              ስለ ግዜኻ ከተመስግነካ
+            </h2>
+            <p>
+              10 ፓውንድ ዝዋግኡ ኢ-ቮቸር ኣካቲትና ኣለና። 20 ፓውንድ ዝዋግኡ ቫውቸር እውን ናብ ነፍሲ ወከፍ ነቲ መጽናዕቲ ብኢንተርነት ዝውድእ ዓቢ ሰብ ክለኣኽ እዩ።
+            </p>
+            <p>
+              እቲ ዳህሳስ ኣብ ክፍልታት ይምቀል። ኩሉ ብሓደ ምኻድ ክትውድኦ ትኽእል ኢኻ፣ ወይ ክትዕቅብን ክትምለስን ትኽእል ኢኻ። ክንደይ ግዜ ከም ዝወስድ ኣብ መልስኻ ይምርኮስ፡ ንመብዛሕትኦም ሰባት ግን ካብ 30-40 ደቓይቕ እዩ።
+            </p>
+            <br>
+            <div>
+              {{
+                onsButton({
+                  "text": "መፅናዕቲ መፅናዕቲ",
+                  "url": "access-code",
+                  "noIcon": "true"
+                })
+              }}
+            </div>
+            <hr>
+            <br>
+            <ul>
+              <li><a href="www.ons.gov.uk/surveys"><strong>www.ons.gov.uk/surveys</strong></a></li>
+              <li>ፍሪፎን: <strong>0800 298 5313</strong></li>
+              <li>ኣገልግሎት ሪለይ ኣገልግሎት፡ <strong>(181001) 0800 298 5315?</strong></li>
+            </ul>
+      </section>
+    </div>
+    <div class="ons-grid__col ons-col-4@m ons-push-1@m">
+          {{
+              onsTableOfContents({
+                  "title": 'Also available in',
+                  "ariaLabel": 'Sections in this page',
+                  "itemsList": [
+                      {
+                          "url": 'index-ti',
+                          "text": 'ቲግሬይንያዊ'
+                      },
+                      {
+                          "url": '#section2',
+                          "text": 'বাংলা'
+                      },
+                      {
+                          "url": '#section3',
+                          "text": 'Português'
+                      },
+                      {
+                          "url": '#section4',
+                          "text": 'Polskim'
+                      },
+                      {
+                          "url": '#section5',
+                          "text": 'Română'
+                      },
+                      {
+                          "url": '#section4',
+                          "text": 'Cymraeg'
+                      },
+                      {
+                          "url": 'index',
+                          "text": 'English'
+                      }
+                  ]
+              })
+          }}
+  </div>
+</div>
+    
+{% endblock %}
